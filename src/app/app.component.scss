@@ -1,0 +1,335 @@
+.item1 {
+	grid-area: label1;
+}
+
+.item2 {
+	grid-area: input1;
+}
+
+.item3 {
+	grid-area: label2;
+}
+
+.item4 {
+	grid-area: input2;
+}
+
+.item5 {
+	grid-area: label3;
+}
+
+.item6 {
+	grid-area: input3;
+}
+
+.item7 {
+	grid-area: label4;
+}
+
+.item8 {
+	grid-area: input4;
+}
+
+.item9 {
+	grid-area: label5;
+}
+
+.item10 {
+	grid-area: input5;
+}
+
+.item11 {
+	grid-area: label6;
+
+	input {
+		width: auto !important;
+	}
+}
+
+.item12 {
+	grid-area: input6;
+	margin-left: -120px;
+}
+
+.item13 {
+	grid-area: label7;
+}
+
+.item14 {
+	grid-area: input7;
+}
+
+.item15 {
+	grid-area: label8;
+}
+
+.item16 {
+	grid-area: input8;
+}
+
+.item17 {
+	grid-area: label9;
+}
+
+.item18 {
+	grid-area: input9;
+}
+
+.item19 {
+	grid-area: label10;
+}
+
+.item20 {
+	grid-area: input10;
+}
+
+.item21 {
+	grid-area: label11;
+}
+
+.item22 {
+	grid-area: input11;
+}
+
+.item23 {
+	grid-area: label12;
+}
+
+.item24 {
+	grid-area: input12;
+}
+
+.item25 {
+	grid-area: label13;
+}
+
+.item26 {
+	grid-area: input13;
+}
+
+.item27 {
+	grid-area: label14;
+}
+
+.item28 {
+	grid-area: input14;
+}
+
+.item29 {
+	grid-area: label15;
+}
+
+.item30 {
+	grid-area: input15;
+}
+
+.item31 {
+	grid-area: label16;
+}
+
+.item32 {
+	grid-area: input16;
+}
+
+.item33 {
+	grid-area: label17;
+}
+
+.item34 {
+	grid-area: input17;
+}
+
+.item35 {
+	grid-area: label18;
+}
+
+.item36 {
+	grid-area: input18;
+}
+
+.item37 {
+	grid-area: label19;
+}
+
+.item38 {
+	grid-area: input19;
+}
+
+.item39 {
+	grid-area: label20;
+}
+
+.item40 {
+	grid-area: input20;
+}
+
+.item41 {
+	grid-area: label21;
+}
+
+.item42 {
+	grid-area: input21;
+}
+
+.item43 {
+	grid-area: label22;
+}
+
+.item44 {
+	grid-area: input22;
+}
+
+.item45 {
+	grid-area: label23;
+}
+
+.item46 {
+	grid-area: input23;
+}
+
+.item47 {
+	grid-area: label24;
+}
+
+.item48 {
+	grid-area: input24;
+}
+
+.item49 {
+	grid-area: label25;
+}
+
+.item50 {
+	grid-area: input25;
+}
+
+.item51 {
+	grid-area: label26;
+}
+
+.item52 {
+	grid-area: input26;
+}
+
+.item53 {
+	grid-area: label27;
+}
+
+.item54 {
+	grid-area: input27;
+}
+
+.item55 {
+	grid-area: button28;
+}
+
+.item56 {
+	grid-area: label29;
+	background-color: rgb(61, 61, 249);
+	color: white;
+	padding: 7px;
+	max-width: 1200px;
+}
+
+.item57 {
+	grid-area: label30;
+	background-color: rgb(61, 61, 249);
+	color: white;
+	padding: 7px;
+	max-width: 1200px;
+}
+
+.item58 {
+	grid-area: label31;
+	background-color: rgb(61, 61, 249);
+	color: white;
+	padding: 7px;
+	max-width: 1200px;
+}
+
+.item59 {
+	grid-area: label32;
+}
+
+.item60 {
+	grid-area: input32;
+	margin-left: -265px;
+}
+
+.item61 {
+	grid-area: label33;
+}
+
+.item62 {
+	grid-area: input33;
+	margin-left: -265px;
+}
+
+.item63 {
+	grid-area: label34;
+}
+
+.item64 {
+	grid-area: input34;
+}
+
+.item65 {
+	grid-area: label35;
+}
+
+.item66 {
+	grid-area: input35;
+}
+
+
+
+.grid-container {
+	display: grid;
+	grid-template-areas:
+		"label29 label29 label29 label29 label29"
+		". . . . ."
+		"label1 input1 label2 input2 ."
+		"label3 input3 input3 input3 input3"
+		"label4 input4 input4 input4 input4"
+		"label5 input5 label6 input6 ."
+		"label7 input7 label8 input8 ."
+		"label9 input9 input9 input9 input9"
+		"label10 input10 input10 input10 input10"
+		"label11 input11 label12 input12 ."
+		"label13 input13 label14 input14 ."
+		"label15 input15 label27 input27 ."
+		"label16 input16 label17 input17 ."
+		". . . . ."
+		"label30 label30 label30 label30 label30"
+		". . . . ."
+		"label18 input18 label19 input19 ."
+		"label20 input20 label21 input21 ."
+		"label22 input22 label23 input23 ."
+		"label24 input24 label25 input25 ."
+		"label26 input26 input26 input26 input26"
+		". . . . ."
+		"label31 label31 label31 label31 label31"
+		". . . . ."
+		"label32 input32 label33 input33 ."
+		"label34 input34 label35 input35 ."
+		". . . . ."
+		". . . . button28";
+
+	grid-template-columns: 170px 400px 150px 400px 320px;
+	gap: 5px;
+	padding: 10px;
+	background-color: rgb(227, 227, 227);
+}
+
+.grid-container input,
+.grid-container select {
+	width: 80%;
+	padding: 3px;
+	font-size: 16px;
+}
+
+/* Định dạng label */
+.grid-container label {
+	font-weight: bold;
+	align-self: center;
+}
