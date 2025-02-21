@@ -6,7 +6,11 @@ import {
     FormsModule,
     FormGroup,
     FormControl,
-    Validators} from '@angular/forms';
+    Validators,
+    FormBuilder } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
+import { ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,43 +20,43 @@ import {
 export class AppComponent  {
   title = 'angular7-reactive-postMethod';
   myform: FormGroup;	  
-    constructor( private http: HttpClient) {
-    	this.myform = new FormGroup({
-        datacode: new FormControl('', [Validators.required]),
-        select: new FormControl('',   [Validators.required]),
-        uName: new FormControl(	'',	[Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('^[a-zA-Z]+$')]),
-        lastName: new FormControl(	'',	[Validators.required, Validators.minLength(3), Validators.maxLength(5), Validators.pattern('^[a-zA-Z]+$')]),
-        object: new FormControl('',   [Validators.required]),
-        datacode2: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-        middlename: new FormControl('',   [Validators.required]),
-        uphonenumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]),
-        address: new FormControl('', 	[Validators.required]),
-        legal: new FormControl('', 	[Validators.required]),
-        position: new FormControl('', 	[Validators.required]),
-        guest: new FormControl('', 	[Validators.required]),
-        gphonenumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]),
-        country: new FormControl('', 	[Validators.required]),
-        file: new FormControl('', 	[Validators.required]),
-        fax: new FormControl('', 	[Validators.required]),
-        unit: new FormControl('', 	[Validators.required]),
-        objective: new FormControl('',   [Validators.required]),
-        stream: new FormControl(  '',  [Validators.required]),
-        region: new FormControl(  '',  [Validators.required]),
-        yourphonenumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]), 
-        money: new FormControl(  '',  [Validators.required]), 
-        eMail: new FormControl(  '',  [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]),
-        soCMT: new FormControl(  '',  [Validators.required, Validators.pattern('^[0-9]+$')]),
-        optionsRadios : new FormControl('',   [Validators.required]),
-        optionChecked : new FormControl('',   [Validators.required]),
-        password: new FormControl(  '',  [Validators.required]),
-        dIssue : new FormControl('',   [Validators.required]),
-        pIssue : new FormControl('',   [Validators.required]),
-        checkbox: new FormControl('',   [Validators.required]),
-        checkbox2: new FormControl('',   [Validators.required]),
-        Theoky: new FormControl('',   [Validators.required]),
-        ngay: new FormControl('',   [Validators.required]),
-      });  
-  	}
+    constructor(private http: HttpClient, private fb: FormBuilder) {
+      this.myform = this.fb.group({
+        datacode: ['', [Validators.required]],
+        select: ['', [Validators.required]],
+        uName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('^[a-zA-Z]+$')]],
+        lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(5), Validators.pattern('^[a-zA-Z]+$')]],
+        object: ['', [Validators.required]],
+        datacode2: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+        middlename: ['', [Validators.required]],
+        uphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
+        address: ['', [Validators.required]],
+        legal: ['', [Validators.required]],
+        position: ['', [Validators.required]],
+        guest: ['', [Validators.required]],
+        gphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
+        country: ['', [Validators.required]],
+        file: ['', [Validators.required]],
+        fax: ['', [Validators.required]],
+        unit: ['', [Validators.required]],
+        objective: ['', [Validators.required]],
+        stream: ['', [Validators.required]],
+        region: ['', [Validators.required]],
+        yourphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
+        money: ['', [Validators.required]],
+        eMail: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
+        soCMT: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+        optionsRadios: ['', [Validators.required]],
+        optionChecked: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        dIssue: ['', [Validators.required, this.dateNotInFuture()]],
+        pIssue: ['', [Validators.required]],
+        checkbox: ['', [Validators.required]],
+        checkbox2: ['', [Validators.required]],
+        Theoky: ['', [Validators.required]],
+        ngay: ['', [Validators.required]],
+      });
+    }
 
   	 get formData() { return this.myform.controls; };
 
@@ -156,15 +160,24 @@ export class AppComponent  {
       return this.myform.get('ngay')!;
     }
 
-    dateNotInFuture(control: FormControl) {
-      const selectedDate = new Date(control.value);
-      const today = new Date();
-  
-      today.setHours(0, 0, 0, 0);
-      selectedDate.setHours(0, 0, 0, 0);
-  
-      return selectedDate > today ? { futureDate: true } : null;
+    dateNotInFuture(): ValidatorFn {
+      return (control: AbstractControl): ValidationErrors | null => {
+        if (!control.value) return null;
+    
+        const selectedDate = new Date(control.value);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        selectedDate.setHours(0, 0, 0, 0);
+    
+        console.log("Selected Date:", selectedDate);
+        console.log("Today's Date:", today);
+        console.log("Validation Result:", selectedDate > today ? { 'futureDate': true } : null);
+    
+        return selectedDate > today ? { 'futureDate': true } : null;
+      };
     }
+    
+    
   
 
  validateForm() { 
