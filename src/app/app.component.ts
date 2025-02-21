@@ -177,7 +177,120 @@ export class AppComponent  {
       };
     }
     
-    
+    errorMessages = {
+      datacode: [
+        { type: 'required', message: 'Không được bỏ trống.' }
+      ],
+      select: [
+        {type: 'required', message: 'Không được bỏ trống.'}
+      ],
+      uName: [
+        { type: 'required', message: 'Tên không được bỏ trống.' },
+        { type: 'minlength', message: 'Tên không được ít hơn 3 kí tự.' },
+        { type: 'maxlength', message: 'Tên không được nhiều hơn 15 kí tự.' },
+        { type: 'pattern', message: 'Tên không được sử dụng số hoặc kí tự đặc biệt.' },
+      ],
+      lastName: [
+        { type: 'required', message: 'Tên không được bỏ trống.' },
+        { type: 'minlength', message: 'Tên không được ít hơn 3 kí tự.' },
+        { type: 'maxlength', message: 'Tên không được nhiều hơn 15 kí tự.' },
+        { type: 'pattern', message: 'Tên không được sử dụng số hoặc kí tự đặc biệt.' },
+      ],
+      object: [
+        { type: 'required', message: 'Không được bỏ trống.' }
+      ],
+      datacode2: [
+        { type: 'required', message: 'Mã số thuế không được bỏ trống.' },
+        { type: 'pattern', message: 'Mã số thuế phải được nhập số.' }
+      ],
+      middlename: [
+        { type: 'required', message: 'Tên viết tắt không được bỏ trống.' }
+      ],
+      uphonenumber: [
+        { type: 'required', message: 'Địa chỉ liên hệ không được bỏ trống.' },
+        { type: 'pattern', message: 'Địa chỉ liên hệ phải được nhập số.' },
+        { type: 'maxlength', message: 'Địa chỉ liên hệ không được nhiều hơn 10 số.' }
+      ],
+      address: [
+        { type: 'required', message: 'Địa chỉ trên hóa đơn không được bỏ trống.' }
+      ],
+      legal: [
+        { type: 'required', message: 'Đại diện pháp luật không được bỏ trống.' }
+      ],
+      position: [
+        { type: 'required', message: 'Chức vụ đại diện không được bỏ trống.' }
+      ],
+      guest: [
+        { type: 'required', message: 'Đối tác liên hệ không được bỏ trống.' }
+      ],
+      gphonenumber: [
+        { type: 'required', message: 'Số điện thoại đối tác không được bỏ trống.' },
+        { type: 'pattern', message: 'Số điện thoại đối tác phải được nhập số.' },
+        { type: 'maxlength', message: 'Số điện thoại đối tác không được nhiều hơn 10 số.' }
+      ],
+      country: [
+        { type: 'required', message: 'Quốc gia không được bỏ trống.' }
+      ],
+      optionsRadios: [
+        { type: 'required', message: 'Không được bỏ trống.' }
+      ],
+      fax: [
+        { type: 'required', message: 'fax không được bỏ trống.' }
+      ],
+      unit: [
+        { type: 'required', message: 'Đơn vị cơ sở không được bỏ trống.' }
+      ],
+      objective: [
+        { type: 'required', message: 'Ngành hàng không được bỏ trống.' }
+      ],
+      stream: [
+        { type: 'required', message: 'Kênh bán hàng không được bỏ trống.' }
+      ],
+      region: [
+        { type: 'required', message: 'Vùng không được bỏ trống.' }
+      ],
+      money: [
+        { type: 'required', message: 'Tiền tệ phí BL không được bỏ trống.' }
+      ],
+      yourphonenumber: [
+        { type: 'required', message: 'Số điện thoại không được bỏ trống.' },
+        { type: 'pattern', message: 'Số điện thoại phải được nhập số.' },
+        { type: 'maxlength', message: 'Số điện thoại không được nhiều hơn 10 số.' }
+      ],
+      eMail: [
+        { type: 'required', message: 'Email không được bỏ trống.' },
+        { type: 'pattern', message: 'Email không đúng định dạng.' }
+      ],
+      soCMT: [
+        { type: 'required', message: 'Số CMT không được bỏ trống.' },
+        { type: 'pattern', message: 'Số CMT phải được nhập số.' }
+      ],
+      optionChecked: [
+        { type: 'required', message: 'Không được bỏ trống.' }
+      ],
+      password: [
+        { type: 'required', message: 'không được bỏ trống.' }
+      ],
+      dIssue: [
+        { type: 'required', message: 'Ngày cấp không được bỏ trống.' },
+        { type: 'futureDate', message: 'Ngày cấp không được lớn hơn ngày hiện tại.' }
+      ],
+      pIssue: [
+        { type: 'required', message: 'Nơi cấp không được bỏ trống.' }
+      ],
+      checkbox: [
+        { type: 'required', message: 'Không được bỏ trống.' }
+      ],
+      checkbox2: [
+        { type: 'required', message: 'Không được bỏ trống.' }
+      ],
+      Theoky: [
+        { type: 'required', message: 'Theo kỳ không được bỏ trống.' }
+      ],
+      ngay: [
+        { type: 'required', message: 'Ngày Không được bỏ trống.' }
+      ],
+    };
   
 
  validateForm() { 

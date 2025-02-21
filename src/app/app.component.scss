@@ -306,7 +306,7 @@
 		"label20 input20 label21 input21 ."
 		"label22 input22 label23 input23 ."
 		"label24 input24 label25 input25 ."
-		"label26 input26 input26 input26 input26"
+		"label26 input26 input26 input26 ."
 		". . . . ."
 		"label31 label31 label31 label31 label31"
 		". . . . ."
@@ -315,10 +315,11 @@
 		". . . . ."
 		". . . . button28";
 
-	grid-template-columns: 170px 400px 150px 400px 320px;
-	gap: 5px;
-	padding: 10px;
-	background-color: rgb(227, 227, 227);
+		grid-template-columns: 150px 350px 150px 350px 350px  /*repeat(4, minmax(50px, 1fr));*/ ;
+		gap: 5px;
+		padding: 5px;
+		background-color: rgb(227, 227, 227); 
+		transition: background 0.3s ease-in-out;
 }
 
 .grid-container input,
@@ -326,7 +327,9 @@
 	width: 80%;
 	padding: 3px;
 	font-size: 16px;
+	position: relative;
 }
+
 
 /* Định dạng label */
 .grid-container label {
@@ -342,4 +345,56 @@
 	background: none;
   }
   
+  .item2 input,
+  .item6 input,
+  .item8 input,
+  .item18 input,
+  .item20 input,
+  .item26 input,
+  .item28 input,
+  .item44 input,
+  .item46 input,
+  .item48 input,
+  .item50 input,
+  .item52 input {
+	border: 1.3px solid red !important;
+  }
+
+
+  @media (max-width: 1024px) {
+	.grid-container {
+	  grid-template-columns: 170px 1fr 150px 1fr; /* Giữ cột đầu & giữa nhưng cho phép co giãn */
+	}
+  }
+
+  @media (max-width: 768px) {
+	.grid-container {
+	  display: flex;
+	  flex-direction: column;
+	  background-color: rgb(227, 227, 227); /* Đổi nền thành trắng */
+	  padding: 10px; 
+	  grid-template-columns: 1fr;
+	}
   
+	/* Đưa tất cả label lên trên input */
+	.grid-container label {
+	  width: 100%;
+	  text-align: left;
+	  margin-bottom: 5px;
+	}
+  
+	.grid-container input {
+	  width: 100%;
+	  padding: 10px;
+	  font-size: 16px;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	}
+  
+	/* Tăng khoảng cách giữa các phần tử */
+	.grid-container > * {
+	  margin-bottom: 15px;
+	  width: 100%;
+	}
+  }
+

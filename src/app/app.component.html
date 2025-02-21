@@ -9,8 +9,8 @@
                 <div class="item2">
                     <input type="text" class="form-control" name="datacode" formControlName="datacode" />
                     <div *ngIf="datacode.invalid && (datacode.dirty || datacode.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="datacode.errors?.['required']">
-                            Mã không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.datacode">
+                            <div *ngIf="datacode.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -22,8 +22,8 @@
                         <option value="admin">Admin</option>
                     </select>
                     <div *ngIf="select.invalid && (select.dirty || select.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="select.errors?.['required']">
-                            Không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.select">
+                            <div *ngIf="select.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -31,35 +31,17 @@
                 <div class="item6">
                     <input type="text" class="form-control" name="uName" formControlName="uName" />
                     <div *ngIf="uName.invalid && (uName.dirty || uName.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="uName.errors?.['required']">
-                            Tên không được bỏ trống.
-                        </div>
-                        <div *ngIf="uName.errors?.['minlength']">
-                            Tên không được ít hơn 3 kí tự.
-                        </div>
-                        <div *ngIf="uName.errors?.['maxlength']">
-                            Tên không được nhiều hơn 15 kí tự.
-                        </div>
-                        <div *ngIf="uName.errors?.['pattern']">
-                            Tên không được sử dụng số hoặc kí tự đặc biệt.  
-                        </div>
+                      <div *ngFor="let error of errorMessages.uName">
+                        <div *ngIf="uName.hasError(error.type)">{{ error.message }}</div>
+                      </div>
                     </div>
-                </div>
+                  </div>                  
                 <div class="item7"><label>Họ</label></div>
                 <div class="item8">
                     <input type="text" class="form-control" name="lastName" formControlName="lastName" />
                     <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="lastName.errors?.['required']">
-                            Họ không được bỏ trống.
-                        </div>
-                        <div *ngIf="lastName.errors?.['minlength']">
-                            Họ không được ít hơn 3 kí tự.
-                        </div>
-                        <div *ngIf="lastName.errors?.['maxlength']">
-                            Họ không được nhiều hơn 15 kí tự.
-                        </div>
-                        <div *ngIf="lastName.errors?.['pattern']">
-                            Họ không được sử dụng số hoặc kí tự đặc biệt.  
+                        <div *ngFor="let error of errorMessages.lastName">
+                            <div *ngIf="lastName.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -71,8 +53,8 @@
                         <option value="admin">Tổ chức</option>
                     </select>
                     <div *ngIf="object.invalid && (object.dirty || object.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="object.errors?.['required']">
-                            Loại đối tượng không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.object">
+                            <div *ngIf="object.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -82,11 +64,8 @@
                 <div class="item14">
                     <input type="text" class="form-control" name="datacode2" formControlName="datacode2" />
                     <div *ngIf="datacode2.invalid && (datacode2.dirty || datacode2.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="datacode2.errors?.['required']">
-                            Mã số thuế không được bỏ trống.
-                        </div>
-                        <div *ngIf="datacode2.errors?.['pattern']">
-                            Mã số thuế phải được nhập bằng số.
+                        <div *ngFor="let error of errorMessages.datacode2">
+                            <div *ngIf="datacode2.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -96,8 +75,8 @@
                 <div class="item16">
                     <input type="password" class="form-control" name="middlename" formControlName="middlename"/>
                     <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="middlename.errors?.['required']">
-                            Tên viết tắt không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.middlename">
+                            <div *ngIf="middlename.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -105,14 +84,8 @@
                 <div class="item18">
                     <input type="text" class="form-control" name="uphonenumber" formControlName="uphonenumber" />
                     <div *ngIf="uphonenumber.invalid && (uphonenumber.dirty || uphonenumber.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="uphonenumber.errors?.['required']">
-                            Địa chỉ liên không được bỏ trống.
-                        </div>
-                        <div *ngIf="uphonenumber.errors?.['pattern']">
-                            Địa chỉ liên phải được nhập bằng số.
-                        </div>
-                        <div *ngIf="uphonenumber.errors?.['maxlength']">
-                            Địa chỉ liên không được nhập quá 10 số.
+                        <div *ngFor="let error of errorMessages.uphonenumber">
+                            <div *ngIf="uphonenumber.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -120,8 +93,8 @@
                 <div class="item20">
                     <input type="text" class="form-control" name="address" formControlName="address"/>
                     <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="address.errors?.['required']">
-                            Địa chỉ trên hóa đơn không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.address">
+                            <div *ngIf="address.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -129,8 +102,8 @@
                 <div class="item22">
                     <input type="text" class="form-control" name="legal" formControlName="legal"/>
                     <div *ngIf="legal.invalid && (legal.dirty || legal.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="legal.errors?.['required']">
-                            Đại diện pháp luật không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.legal">
+                            <div *ngIf="legal.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -138,8 +111,8 @@
                 <div class="item24">
                     <input type="text" class="form-control" name="position" formControlName="position"/>
                     <div *ngIf="position.invalid && (position.dirty || position.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="position.errors?.['required']">
-                            Chức vụ đại diện không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.position">
+                            <div *ngIf="position.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -147,8 +120,8 @@
                 <div class="item26">
                     <input type="text" class="form-control" name="guest" formControlName="guest"/>
                     <div *ngIf="guest.invalid && (guest.dirty || guest.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="guest.errors?.['required']">
-                            Đối tác liên hệ không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.guest">
+                            <div *ngIf="guest.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -156,14 +129,8 @@
                 <div class="item28">
                     <input type="text" class="form-control" name="gphonenumber" formControlName="gphonenumber" />
                     <div *ngIf="gphonenumber.invalid && (gphonenumber.dirty || gphonenumber.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="gphonenumber.errors?.['required']">
-                            Địa chỉ liên không được bỏ trống.
-                        </div>
-                        <div *ngIf="uphonenumber.errors?.['pattern']">
-                            Địa chỉ liên phải được nhập bằng số.
-                        </div>
-                        <div *ngIf="uphonenumber.errors?.['maxlength']">
-                            Địa chỉ liên không được nhập quá 10 số.
+                        <div *ngFor="let error of errorMessages.gphonenumber">
+                            <div *ngIf="gphonenumber.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -171,8 +138,8 @@
                 <div class="item30">
                     <input type="text" class="form-control" name="country" formControlName="country"/>
                     <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="country.errors?.['required']">
-                            Quốc gia không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.country">
+                            <div *ngIf="country.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -180,8 +147,8 @@
                 <div class="item54">
                     <input type="text" class="form-control" name="optionsRadios" formControlName="optionsRadios"/>
                     <div *ngIf="optionsRadios.invalid && (optionsRadios.dirty || optionsRadios.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="optionsRadios.errors?.['required']">
-                            Số file khách hàng không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.optionsRadios">
+                            <div *ngIf="optionsRadios.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -189,8 +156,8 @@
                 <div class="item32">
                     <input type="text" class="form-control" name="fax" formControlName="fax"/>
                     <div *ngIf="fax.invalid && (fax.dirty || fax.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="fax.errors?.['required']">
-                            fax không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.fax">
+                            <div *ngIf="fax.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -198,8 +165,8 @@
                 <div class="item34">
                     <input type="text" class="form-control" name="unit" formControlName="unit"/>
                     <div *ngIf="unit.invalid && (unit.dirty || unit.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="unit.errors?.['required']">
-                            Đơn vị cơ sở không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.unit">
+                            <div *ngIf="unit.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -214,8 +181,8 @@
                         <option value="furniture">Nội thất</option>
                     </select>
                     <div *ngIf="objective.invalid && (objective.dirty || objective.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="objective.errors?.['required']">
-                            Ngành hàng không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.objective">
+                            <div *ngIf="objective.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -229,8 +196,8 @@
                         <option value="furniture">Nội thất</option>
                     </select>
                     <div *ngIf="stream.invalid && (stream.dirty || stream.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="stream.errors?.['required']">
-                            Kênh bán hàng không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.stream">
+                            <div *ngIf="stream.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -243,8 +210,8 @@
                         <option value="South">Nam bộ</option>
                     </select>
                     <div *ngIf="region.invalid && (region.dirty || region.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="region.errors?.['required']">
-                            Vùng không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.region">
+                            <div *ngIf="region.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -257,8 +224,8 @@
                         <option value="South">Euro</option>
                     </select>
                     <div *ngIf="money.invalid && (money.dirty || money.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="money.errors?.['required']">
-                            Tiền tệ phí BL không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.money">
+                            <div *ngIf="money.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -266,14 +233,8 @@
                 <div class="item44">
                     <input type="text" class="form-control" name="yourphonenumber" formControlName="yourphonenumber" />
                     <div *ngIf="yourphonenumber.invalid && (yourphonenumber.dirty || yourphonenumber.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="yourphonenumber.errors?.['required']">
-                            Địa chỉ liên không được bỏ trống.
-                        </div>
-                        <div *ngIf="yourphonenumber.errors?.['pattern']">
-                            Địa chỉ liên phải được nhập bằng số.
-                        </div>
-                        <div *ngIf="yourphonenumber.errors?.['maxlength']">
-                            Địa chỉ liên không được nhập quá 10 số.
+                        <div *ngFor="let error of errorMessages.yourphonenumber">
+                            <div *ngIf="yourphonenumber.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -281,11 +242,8 @@
                 <div class="item46">
                     <input type="email" class="form-control" name="eMail" formControlName="eMail"/>
                     <div *ngIf="eMail.invalid && (eMail.dirty || eMail.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="eMail.errors?.['required']">
-                            Email không được bỏ trống.
-                        </div>
-                        <div *ngIf="eMail.errors?.['pattern']">
-                            Email không đúng định dạng.
+                        <div *ngFor="let error of errorMessages.eMail">
+                            <div *ngIf="eMail.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -293,11 +251,8 @@
                 <div class="item48">
                     <input type="soCMT" class="form-control" name="soCMT" formControlName="soCMT"/>
                     <div *ngIf="soCMT.invalid && (soCMT.dirty || soCMT.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="soCMT.errors?.['required']">
-                            Số CMT/CCCD không được bỏ trống.
-                        </div>
-                        <div *ngIf="soCMT.errors?.['pattern']">
-                            Số CMT/CCCD không đúng định dạng.
+                        <div *ngFor="let error of errorMessages.soCMT">
+                            <div *ngIf="soCMT.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -305,11 +260,8 @@
                 <div class="item50">
                     <input type="date" class="form-control" name="dIssue" formControlName="dIssue" />
                     <div *ngIf="dIssue.invalid && (dIssue.dirty || dIssue.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="dIssue.errors?.['required']">
-                            Ngày cấp không được bỏ trống.
-                        </div>
-                        <div *ngIf="dIssue.errors?.['futureDate']">
-                            Ngày cấp không được vượt quá ngày hiện tại.
+                        <div *ngFor="let error of errorMessages.dIssue">
+                            <div *ngIf="dIssue.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -317,22 +269,24 @@
                 <div class="item52">
                     <input type="text" class="form-control" name="pIssue" formControlName="pIssue"/>
                     <div *ngIf="pIssue.invalid && (pIssue.dirty || pIssue.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="pIssue.errors?.['required']">
-                            Nơi cấp không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.pIssue">
+                            <div *ngIf="pIssue.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
                 <div class="item58"><label>Theo dõi công nợ chi tiết</label></div>
                 <div class="item59"><label>Theo hạn nợ</label></div>
-                <div class="item60"><input type="checkbox" class="form-check-input" name="checkbox" formControlName="checkbox"></div>
+                <div class="item60">
+                    <input type="checkbox" class="form-check-input" name="checkbox" formControlName="checkbox">
+                </div>
                 <div class="item61"><label>Chi tiết theo hợp đồng</label></div>
                 <div class="item62"><input type="checkbox" class="form-check-input" name="checkbox2" formControlName="checkbox2"></div>
                 <div class="item63"><label>Theo kỳ</label></div>
                 <div class="item64">
                     <input type="text" class="form-control" name="Theoky" formControlName="Theoky"/>
                     <div *ngIf="Theoky.invalid && (Theoky.dirty || Theoky.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="Theoky.errors?.['required']">
-                            Theoky không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.Theoky">
+                            <div *ngIf="Theoky.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
@@ -340,8 +294,8 @@
                 <div class="item66">
                     <input type="text" class="form-control" name="ngay" formControlName="ngay"/>
                     <div *ngIf="ngay.invalid && (ngay.dirty || ngay.touched)" class="alert alert-danger" role="alert">
-                        <div *ngIf="ngay.errors?.['required']">
-                            Theo hạn không được bỏ trống.
+                        <div *ngFor="let error of errorMessages.ngay">
+                            <div *ngIf="ngay.hasError(error.type)">{{ error.message }}</div>
                         </div>
                     </div>
                 </div>
