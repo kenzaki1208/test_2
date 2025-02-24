@@ -202,10 +202,10 @@ export class TestComponent  {
         { type: 'pattern', message: 'Tên không được sử dụng số hoặc kí tự đặc biệt.' },
       ],
       lastName: [
-        { type: 'required', message: 'Tên không được bỏ trống.' },
-        { type: 'minlength', message: 'Tên không được ít hơn 3 kí tự.' },
-        { type: 'maxlength', message: 'Tên không được nhiều hơn 15 kí tự.' },
-        { type: 'pattern', message: 'Tên không được sử dụng số hoặc kí tự đặc biệt.' },
+        { type: 'required', message: 'Họ không được bỏ trống.' },
+        { type: 'minlength', message: 'Họ không được ít hơn 3 kí tự.' },
+        { type: 'maxlength', message: 'Họ không được nhiều hơn 15 kí tự.' },
+        { type: 'pattern', message: 'Họ không được sử dụng số hoặc kí tự đặc biệt.' },
       ],
       object: [
         { type: 'required', message: 'Không được bỏ trống.' }
