@@ -1,0 +1,350 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-body">
+        <form  [formGroup]="myform" (ngSubmit) = "onSubmit(myform.value)">
+            <div class="grid-container">
+                <div class="item56"><label >Thông tin chung</label></div>
+                <div class="item1"><label>Mã</label></div>
+                <div class="item2">
+                    <input type="text" class="form-control" name="datacode" formControlName="datacode" />
+                    <div *ngIf="datacode.invalid && (datacode.dirty || datacode.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.datacode">
+                            <div *ngIf="datacode.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item3"><label for="exampleSelect1">Nhóm mẹ</label></div>
+                <div class="item4">
+                    <select class="form-control"  name="group" formControlName="group">
+                        <option value="">select</option>
+                        <option value="customer">Khách hàng</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <!-- <div *ngIf="group.invalid && (group.dirty || group.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.group">
+                            <div *ngIf="group.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item5"><label>Tên</label></div>
+                <div class="item6">
+                    <input type="text" class="form-control" name="uName" formControlName="uName" />
+                    <div *ngIf="uName.invalid && (uName.dirty || uName.touched)" class="alert alert-danger" role="alert">
+                      <div *ngFor="let error of errorMessages.uName">
+                        <div *ngIf="uName.hasError(error.type)">{{ error.message }}</div>
+                      </div>
+                    </div>
+                  </div>                  
+                <div class="item7"><label>Họ</label></div>
+                <div class="item8">
+                    <input type="text" class="form-control" name="lastName" formControlName="lastName" />
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.lastName">
+                            <div *ngIf="lastName.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item9"><label for="exampleSelect1">Loại đối tượng</label></div>
+                <div class="item10">
+                    <select class="form-control"  name="object" formControlName="object">
+                        <option value="">select</option>
+                        <option value="customer">Cá nhân</option>
+                        <option value="admin">Tổ chức</option>
+                    </select>
+                    <!-- <div *ngIf="object.invalid && (object.dirty || object.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.object">
+                            <div *ngIf="object.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item11"><input type="checkbox" class="form-check-input" name="optionChecked" formControlName="optionChecked"></div>
+                <div class="item12"><label class="form-check-label">Là khách hàng</label></div>
+                <div class="item13"><label>Mã số thuế</label></div>
+                <div class="item14">
+                    <input type="text" class="form-control" name="datacode2" formControlName="datacode2" />
+                    <!-- <div *ngIf="datacode2.invalid && (datacode2.dirty || datacode2.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.datacode2">
+                            <div *ngIf="datacode2.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item15">
+                    <label >Tên viết tắt</label>
+                </div>
+                <div class="item16">
+                    <input type="password" class="form-control" name="middlename" formControlName="middlename"/>
+                    <!-- <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.middlename">
+                            <div *ngIf="middlename.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item17"><label>Địa chỉ liên hệ</label></div>
+                <div class="item18">
+                    <input type="text" class="form-control" name="uphonenumber" formControlName="uphonenumber" />
+                    <div *ngIf="uphonenumber.invalid && (uphonenumber.dirty || uphonenumber.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.uphonenumber">
+                            <div *ngIf="uphonenumber.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item19"><label>Địa chỉ trên hóa đơn</label></div>
+                <div class="item20">
+                    <input type="text" class="form-control" name="address" formControlName="address"/>
+                    <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.address">
+                            <div *ngIf="address.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item21"><label>Đại diện pháp luật</label></div>
+                <div class="item22">
+                    <input type="text" class="form-control" name="legal" formControlName="legal"/>
+                    <!-- <div *ngIf="legal.invalid && (legal.dirty || legal.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.legal">
+                            <div *ngIf="legal.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item23"><label>Chức vụ đại diện</label></div>
+                <div class="item24">
+                    <input type="text" class="form-control" name="position" formControlName="position"/>
+                    <!-- <div *ngIf="position.invalid && (position.dirty || position.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.position">
+                            <div *ngIf="position.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item25"><label>Đối tác liên hệ</label></div>
+                <div class="item26">
+                    <input type="text" class="form-control" name="guest" formControlName="guest"/>
+                    <div *ngIf="guest.invalid && (guest.dirty || guest.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.guest">
+                            <div *ngIf="guest.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item27"><label>Số điện thoại đối tác</label></div>
+                <div class="item28">
+                    <input type="text" class="form-control" name="gphonenumber" formControlName="gphonenumber" />
+                    <div *ngIf="gphonenumber.invalid && (gphonenumber.dirty || gphonenumber.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.gphonenumber">
+                            <div *ngIf="gphonenumber.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item29"><label>Quốc gia</label></div>
+                <div class="item30">
+                    <input type="text" class="form-control" name="country" formControlName="country"/>
+                    <!-- <div *ngIf="country.invalid && (country.dirty || country.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.country">
+                            <div *ngIf="country.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item53"><label>Số file khách hàng</label></div>
+                <div class="item54">
+                    <input type="text" class="form-control" name="optionsRadios" formControlName="optionsRadios"/>
+                    <!-- <div *ngIf="optionsRadios.invalid && (optionsRadios.dirty || optionsRadios.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.optionsRadios">
+                            <div *ngIf="optionsRadios.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item31"><label>Fax</label></div>
+                <div class="item32">
+                    <input type="text" class="form-control" name="fax" formControlName="fax"/>
+                    <!-- <div *ngIf="fax.invalid && (fax.dirty || fax.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.fax">
+                            <div *ngIf="fax.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item33"><label>Đơn vị cơ sở</label></div>
+                <div class="item34">
+                    <input type="text" class="form-control" name="unit" formControlName="unit"/>
+                    <!-- <div *ngIf="unit.invalid && (unit.dirty || unit.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.unit">
+                            <div *ngIf="unit.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item57"><label>Thông tin chi tiết</label></div>
+                <div class="item35"><label for="exampleSelect1">Ngành hàng</label></div>
+                <div class="item36">
+                    <select class="form-control"  name="objective" formControlName="objective">
+                        <option value="">select</option>
+                        <option value="electric">Điện tử</option>
+                        <option value="farm">Nông sản</option>
+                        <option value="fasion">Thời trang</option>
+                        <option value="furniture">Nội thất</option>
+                        <option value="shopee">Shopee</option>
+                    </select>
+                    <!-- <div *ngIf="objective.invalid && (objective.dirty || objective.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.objective">
+                            <div *ngIf="objective.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item37"><label for="exampleSelect1">Kênh bán hàng</label></div>
+                <div class="item38">
+                    <select class="form-control"  name="stream" formControlName="stream">
+                        <option value="">select</option>
+                        <option value="shopee">shopee</option>
+                        <option value="lazada">lazada</option>
+                        <option value="tiki">tiki</option>
+                        <option value="furniture">Nội thất</option>
+                    </select>
+                    <!-- <div *ngIf="stream.invalid && (stream.dirty || stream.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.stream">
+                            <div *ngIf="stream.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item39"><label for="exampleSelect1">Vùng</label></div>
+                <div class="item40">
+                    <select class="form-control"  name="region" formControlName="region">
+                        <option value="">select</option>
+                        <option value="North">Bắc bộ</option>
+                        <option value="Central">Trung bộ</option>
+                        <option value="South">Nam bộ</option>
+                    </select>
+                    <!-- <div *ngIf="region.invalid && (region.dirty || region.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.region">
+                            <div *ngIf="region.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item41"><label for="exampleSelect1">Tiền tệ phí BL</label></div>
+                <div class="item42">
+                    <select class="form-control"  name="money" formControlName="money">
+                        <option value="">select</option>
+                        <option value="North">VND</option>
+                        <option value="Central">Đô la</option>
+                        <option value="South">Euro</option>
+                    </select>
+                    <!-- <div *ngIf="money.invalid && (money.dirty || money.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.money">
+                            <div *ngIf="money.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item43"><label>Điện thoại</label></div>
+                <div class="item44">
+                    <input type="text" class="form-control" name="yourphonenumber" formControlName="yourphonenumber" />
+                    <div *ngIf="yourphonenumber.invalid && (yourphonenumber.dirty || yourphonenumber.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.yourphonenumber">
+                            <div *ngIf="yourphonenumber.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item45"><label >E-mail</label></div>
+                <div class="item46">
+                    <input type="email" class="form-control" name="eMail" formControlName="eMail"/>
+                    <div *ngIf="eMail.invalid && (eMail.dirty || eMail.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.eMail">
+                            <div *ngIf="eMail.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item47"><label >Số CMT/CCCD</label></div>
+                <div class="item48">
+                    <input type="soCMT" class="form-control" name="soCMT" formControlName="soCMT"/>
+                    <div *ngIf="soCMT.invalid && (soCMT.dirty || soCMT.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.soCMT">
+                            <div *ngIf="soCMT.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item49"><label>Ngày cấp</label></div>
+                <div class="item50">
+                    <input type="date" class="form-control" name="dIssue" formControlName="dIssue" />
+                    <div *ngIf="dIssue.invalid && (dIssue.dirty || dIssue.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.dIssue">
+                            <div *ngIf="dIssue.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item51"><label>Nơi cấp</label></div>
+                <div class="item52">
+                    <input type="text" class="form-control" name="pIssue" formControlName="pIssue"/>
+                    <div *ngIf="pIssue.invalid && (pIssue.dirty || pIssue.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.pIssue">
+                            <div *ngIf="pIssue.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item58"><label>Theo dõi công nợ chi tiết</label></div>
+                <div class="item59"><label>Theo hạn nợ</label></div>
+                <div class="item60">
+                    <input type="checkbox" class="form-check-input" name="checkbox" formControlName="checkbox">
+                </div>
+                <div class="item61"><label>Chi tiết theo hợp đồng</label></div>
+                <div class="item62"><input type="checkbox" class="form-check-input" name="checkbox2" formControlName="checkbox2"></div>
+                <div class="item63"><label>Theo kỳ</label></div>
+                <div class="item64">
+                    <input type="text" class="form-control" name="Theoky" formControlName="Theoky"/>
+                    <!-- <div *ngIf="Theoky.invalid && (Theoky.dirty || Theoky.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.Theoky">
+                            <div *ngIf="Theoky.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item65"><label>Theo hạn</label></div>
+                <div class="item66">
+                    <input type="text" class="form-control" name="ngay" formControlName="ngay"/>
+                    <!-- <div *ngIf="ngay.invalid && (ngay.dirty || ngay.touched)" class="alert alert-danger" role="alert">
+                        <div *ngFor="let error of errorMessages.ngay">
+                            <div *ngIf="ngay.hasError(error.type)">{{ error.message }}</div>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="item55">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+        <wj-flex-grid [itemsSource]="data" [isReadOnly]="true" [selectionMode]="'Row'" style="height: 1500px;">
+
+            <!-- Định nghĩa cột -->
+            <wj-flex-grid-column [header]="'Mã'" [binding]="'datacode'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Nhóm mẹ'" [binding]="'group'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Tên'" [binding]="'uName'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Họ'" [binding]="'lastName'" [width]="'3*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Loại đối tượng'" [binding]="'object'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Là khách hàng'" [binding]="'optionChecked'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Mã số thuế'" [binding]="'datacode2'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Tên viết tắt'" [binding]="'middlename'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Địa chỉ liên hệ'" [binding]="'uphonenumber'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Địa chỉ trên hóa đơn'" [binding]="'address'" [width]="'3*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Đại diện pháp luật'" [binding]="'legal'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Đối tác liên hệ'" [binding]="'guest'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Số điện thoại đối tác'" [binding]="'gphonenumber'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Quốc gia'" [binding]="'country'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Số file khách hàng'" [binding]="'optionsRadios'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Fax'" [binding]="'fax'" [width]="'3*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Đơn vị cơ sở'" [binding]="'unit'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Ngành hàng'" [binding]="'objective'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Kênh bán hàng'" [binding]="'stream'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Vùng'" [binding]="'region'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Tiền tệ phí BL'" [binding]="'money'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Điện thoại'" [binding]="'yourphonenumber'" [width]="'3*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'E-mail'" [binding]="'eMail'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Số CMT/CCCD'" [binding]="'soCMT'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Ngày cấp'" [binding]="'dIssue'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Nơi cấp'" [binding]="'pIssue'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Theo hạn nợ'" [binding]="'checkbox'" [width]="'2*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Chi tiết theo hợp đồng'" [binding]="'checkbox2'" [width]="'3*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Theo kì'" [binding]="'Theoky'" [width]="'1.5*'"></wj-flex-grid-column>
+            <wj-flex-grid-column [header]="'Theo hạn'" [binding]="'ngay'" [width]="'1.5*'"></wj-flex-grid-column>
+          
+          </wj-flex-grid>
+    </div>
+</div>
+</div>
+    
+    

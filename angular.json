@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@mescius/wijmo.styles"
+            ],
             "outputPath": "dist/test_2",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,6 +33,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@mescius/wijmo.styles/wijmo.css",
               "src/styles.scss"
             ],
             "scripts": []
