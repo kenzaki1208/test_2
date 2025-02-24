@@ -11,7 +11,7 @@ import {
 import { ValidatorFn } from '@angular/forms';
 import { AbstractControl } from '@angular/forms';
 import { ValidationErrors } from '@angular/forms';
-import { DataService } from '../test_01/data.service';
+import { DataService } from './data.service';
 
 import * as wjcCore from '@mescius/wijmo';
 import * as wjcGrid from '@mescius/wijmo.grid';

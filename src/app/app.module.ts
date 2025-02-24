@@ -8,15 +8,13 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
-import { Test01Component } from './components/test_01/test_01.component';
-import { DataInterceptor } from './components/test_01/data.interceptor';
-import { DataService } from './components/test_01/data.service';
+import { DataInterceptor } from './components/test/data.interceptor';
+import { DataService } from './components/test/data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    Test01Component
   ],
   imports: [
     BrowserModule,
