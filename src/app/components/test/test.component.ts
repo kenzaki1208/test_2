@@ -33,7 +33,7 @@ export class TestComponent  {
         datacode: ['', [Validators.required]],
         group: ['', [Validators.required]],
         uName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
-        lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(5), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
+        lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
         object: ['', [Validators.required]],
         datacode2: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
         middlename: ['', [Validators.required]],
@@ -206,7 +206,7 @@ export class TestComponent  {
       lastName: [
         { type: 'required', message: 'Họ không được bỏ trống.' },
         { type: 'minlength', message: 'Họ không được ít hơn 3 kí tự.' },
-        { type: 'maxlength', message: 'Họ không được nhiều hơn 5 kí tự.' },
+        { type: 'maxlength', message: 'Họ không được nhiều hơn 10 kí tự.' },
         { type: 'pattern', message: 'Họ không được sử dụng số hoặc kí tự đặc biệt.' },
       ],
       object: [
