@@ -15,6 +15,7 @@ import { DataService } from './data.service';
 
 import * as wjcCore from '@mescius/wijmo';
 import * as wjcGrid from '@mescius/wijmo.grid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -26,12 +27,13 @@ export class TestComponent  {
   myform: FormGroup;	  
   data: any[] = [];
 
-    constructor(private http: HttpClient, private fb: FormBuilder) {
+    constructor(private http: HttpClient, private fb: FormBuilder, private dataService: DataService,
+      private router: Router) {
       this.myform = this.fb.group({
         datacode: ['', [Validators.required]],
         group: ['', [Validators.required]],
-        uName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('^[a-zA-Z]+$')]],
-        lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(5), Validators.pattern('^[a-zA-Z]+$')]],
+        uName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
+        lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(5), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
         object: ['', [Validators.required]],
         datacode2: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
         middlename: ['', [Validators.required]],
@@ -204,7 +206,7 @@ export class TestComponent  {
       lastName: [
         { type: 'required', message: 'Họ không được bỏ trống.' },
         { type: 'minlength', message: 'Họ không được ít hơn 3 kí tự.' },
-        { type: 'maxlength', message: 'Họ không được nhiều hơn 15 kí tự.' },
+        { type: 'maxlength', message: 'Họ không được nhiều hơn 5 kí tự.' },
         { type: 'pattern', message: 'Họ không được sử dụng số hoặc kí tự đặc biệt.' },
       ],
       object: [
@@ -348,13 +350,17 @@ export class TestComponent  {
           dIssue: this.myform.value.dIssue,
           pIssue: this.myform.value.pIssue,
           checkbox: this.myform.value.checkbox,
-          checkbox2: this.myform.value.datacode,
+          checkbox2: this.myform.value.checkbox2,
           Theoky: this.myform.value.Theoky,
           ngay: this.myform.value.ngay,
         }
       ]
       console.log(this.myform)
       console.log("Form is invalid");
+
+      this.dataService.addData(this.data[0]); 
+      this.router.navigate(['/grid']);
+      console.log("Data sent to DataService:", this.data);
     }
 
     

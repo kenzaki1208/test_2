@@ -10,11 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
 import { DataInterceptor } from './components/test/data.interceptor';
 import { DataService } from './components/test/data.service';
+import { GridComponentComponent } from './components/test_01/grid-component.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
+    GridComponentComponent
   ],
   imports: [
     BrowserModule,

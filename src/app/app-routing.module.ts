@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TestComponent } from './components/test/test.component';
+import { GridComponentComponent } from './components/test_01/grid-component.component';
 
 const routes: Routes = [
   {
@@ -8,6 +9,11 @@ const routes: Routes = [
     path: 'test',
     title: 'test-component', 
   },
+  {
+    component: GridComponentComponent,
+    path: 'grid',
+    title: 'grid-component'
+  }
 ];
 
 @NgModule({

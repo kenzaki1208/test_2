@@ -281,124 +281,185 @@
 	grid-area: input35;
 }
 
+.grid-container input.red-border {
+    border: 1.3px solid red !important;
+}
 
+.grid-container input.black-border {
+    border: 1.3px solid black !important;
+}
 
 .grid-container {
-	display: grid;
-	grid-template-areas:
-		"label29 label29 label29 label29 label29"
-		". . . . ."
-		"label1 input1 label2 input2 ."
-		"label3 input3 input3 input3 input3"
-		"label4 input4 input4 input4 input4"
-		"label5 input5 label6 input6 ."
-		"label7 input7 label8 input8 ."
-		"label9 input9 input9 input9 input9"
-		"label10 input10 input10 input10 input10"
-		"label11 input11 label12 input12 ."
-		"label13 input13 label14 input14 ."
-		"label15 input15 label27 input27 ."
-		"label16 input16 label17 input17 ."
-		". . . . ."
-		"label30 label30 label30 label30 label30"
-		". . . . ."
-		"label18 input18 label19 input19 ."
-		"label20 input20 label21 input21 ."
-		"label22 input22 label23 input23 ."
-		"label24 input24 label25 input25 ."
-		"label26 input26 input26 input26 input26"
-		". . . . ."
-		"label31 label31 label31 label31 label31"
-		". . . . ."
-		"label32 input32 label33 input33 ."
-		"label34 input34 label35 input35 ."
-		". . . . ."
-		". . . . button28";
-
-		grid-template-columns: 150px 350px 150px 350px 450px  /*repeat(4, minmax(50px, 1fr));*/ ;
-		gap: 5px;
-		padding: 5px;
-		background-color: rgb(227, 227, 227); 
-		transition: background 0.3s ease-in-out;
+    display: grid;
+    grid-template-areas:
+        "label29 label29 label29 label29 label29"
+        ". . . . ."
+        "label1 input1 label2 input2 ."
+        "label3 input3 input3 input3 input3"
+        "label4 input4 input4 input4 input4"
+        "label5 input5 label6 input6 ."
+        "label7 input7 label8 input8 ."
+        "label9 input9 input9 input9 input9"
+        "label10 input10 input10 input10 input10"
+        "label11 input11 label12 input12 ."
+        "label13 input13 label14 input14 ."
+        "label15 input15 label27 input27 ."
+        "label16 input16 label17 input17 ."
+        ". . . . ."
+        "label30 label30 label30 label30 label30"
+        ". . . . ."
+        "label18 input18 label19 input19 ."
+        "label20 input20 label21 input21 ."
+        "label22 input22 label23 input23 ."
+        "label24 input24 label25 input25 ."
+        "label26 input26 input26 input26 input26"
+        ". . . . ."
+        "label31 label31 label31 label31 label31"
+        ". . . . ."
+        "label32 input32 label33 input33 ."
+        "label34 input34 label35 input35 ."
+        ". . . . ."
+        ". . . . button28";
+    grid-template-columns: 200px 1fr 200px 1fr 1fr; 
+    gap: 5px;
+    padding: 20px;
+    background-color: rgb(227, 227, 227);
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .grid-container input,
 .grid-container select {
-	width: 80%;
-	padding: 3px;
-	font-size: 16px;
-	position: relative;
+    width: 100%;
+    padding: 5px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 0; 
 }
 
+.item2 input,
+.item6 input,
+.item8 input,
+.item18 input,
+.item20 input,
+.item26 input,
+.item28 input,
+.item44 input,
+.item46 input,
+.item48 input,
+.item50 input,
+.item52 input {
+    border: 1.3px solid red !important;
+}
 
-/* Định dạng label */
 .grid-container label {
-	font-weight: bold;
-	align-self: center;
+    font-weight: bold;
+    align-self: center;
+    padding: 5px 0;
+    box-sizing: border-box;
+    margin-left: 0; 
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.item3, .item53, .item33, .item37, .item11, .item41, .item15, .item45, .item49, .item61, .item65, .item23, .item27 {
+    margin-left: 20px; 
 }
 
 .alert-danger {
-	color: red !important; 
-	font-size: 14px;
-	padding: 5px;
-	border: none;
-	background: none;
-  }
-  
-  .item2 input,
-  .item6 input,
-  .item8 input,
-  .item18 input,
-  .item20 input,
-  .item26 input,
-  .item28 input,
-  .item44 input,
-  .item46 input,
-  .item48 input,
-  .item50 input,
-  .item52 input {
-	border: 1.3px solid red !important;
-  }
+    color: red !important;
+    font-size: 14px;
+    padding: 5px;
+    border: none;
+    background: none;
+}
 
+.item56, .item57, .item58 {
+    background-color: #3d3df9;
+    color: white;
+    padding: 12px 20px;
+    text-align: left; 
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100vw;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 
-  @media (max-width: 1024px) {
-	.grid-container {
-	  grid-template-columns: 170px 1fr 150px 1fr; /* Giữ cột đầu & giữa nhưng cho phép co giãn */
-	}
-  }
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: 100px 1fr 150px 1fr; 
+    }
+}
 
-  @media (max-width: 768px) {
-	.grid-container {
-	  display: flex;
-	  flex-direction: column;
-	  background-color: rgb(227, 227, 227); /* Đổi nền thành trắng */
-	  padding: 10px; 
-	  grid-template-columns: 1fr;
-	}
-  
-	/* Đưa tất cả label lên trên input */
-	.grid-container label {
-	  width: 100%;
-	  text-align: left;
-	  margin-bottom: 5px;
-	}
-  
-	.grid-container input {
-	  width: 100%;
-	  padding: 10px;
-	  font-size: 16px;
-	  border: 1px solid #ccc;
-	  border-radius: 4px;
-	}
-  
-	/* Tăng khoảng cách giữa các phần tử */
-	.grid-container > * {
-	  margin-bottom: 15px;
-	  width: 100%;
-	}
-  }
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: 100px 1fr 150px 1fr;
+    }
+}
 
-  .btn-primary {
-	display: block !important;
-	visibility: visible !important;
-  }
+@media (max-width: 768px) {
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(227, 227, 227);
+        padding: 15px;
+    }
+
+    .grid-container label,
+    .grid-container input,
+    .grid-container select {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0; 
+    }
+
+    .grid-container label {
+        text-align: left;
+        padding: 5px 0;
+        margin-left: 0; 
+    }
+
+    .grid-container input,
+    .grid-container select {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+    }
+
+    .item12,
+    .item60,
+    .item62,
+    .item64,
+    .item66 {
+        margin-left: 0;
+    }
+
+    .item56, .item57, .item58 {
+        width: 100%;
+        text-align: center; 
+    }
+}
+
+.btn-primary {
+    display: block !important;
+    visibility: visible !important;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

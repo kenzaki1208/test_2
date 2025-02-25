@@ -11,7 +11,7 @@ export class DataInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.method === 'POST' && request.url === 'https://reqres.in/api/users') {
       const body = request.body;
-      this.dataService.addData(body); // Lưu dữ liệu vào DataService
+      this.dataService['addData'](body); // Lưu dữ liệu vào DataService
     }
 
     return next.handle(request).pipe(

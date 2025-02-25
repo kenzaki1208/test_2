@@ -1,24 +1,38 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private dataSubject = new BehaviorSubject<any[]>([]);
-  data$ = this.dataSubject.asObservable();
+  private dataSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.loadDataFromLocalStorage());
+  data$: Observable<any[]> = this.dataSource.asObservable();
+
+  constructor() {
+  }
+
+  private loadDataFromLocalStorage(): any[] {
+    const storedData = localStorage.getItem('gridData');
+    return storedData ? JSON.parse(storedData) : [];
+  }
+
+  private saveDataToLocalStorage(data: any[]) {
+    localStorage.setItem('gridData', JSON.stringify(data));
+  }
+
+  addData(newData: any) {
+    const currentData = this.dataSource.getValue();
+    const updatedData = [...currentData, newData];
+    this.dataSource.next(updatedData);
+    this.saveDataToLocalStorage(updatedData); 
+  }
 
   getData(): any[] {
-    return this.dataSubject.getValue();
+    return this.dataSource.getValue();
   }
 
-  addData(item: any): void {
-    const currentData = this.dataSubject.getValue();
-    currentData.push(item);
-    this.dataSubject.next(currentData);
-  }
-
-  clearData(): void {
-    this.dataSubject.next([]);
+  clearData() {
+    this.dataSource.next([]); 
+    this.saveDataToLocalStorage([]); 
   }
 }
