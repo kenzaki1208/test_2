@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../test/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grid-component',
@@ -9,7 +10,7 @@ import { DataService } from '../test/data.service';
 export class GridComponentComponent implements OnInit {
   data: any[] = [];
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.data = this.dataService.getData();
@@ -19,5 +20,8 @@ export class GridComponentComponent implements OnInit {
   }
   resetData() {
     this.dataService.clearData();
+  }
+  goBack() {
+    this.router.navigate(['/test']);
   }
 }

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function isValidInput(input) {
         const value = input.value.trim();
-        const name = input.getAttribute('name'); 
+        const name = input.getAttribute('name');
 
         if (!value) return false;
 
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
             case 'uphonenumber':
             case 'gphonenumber':
             case 'yourphonenumber':
-                const phoneRegex = /^[0-9]{1,10}$/;
+                const phoneRegex = /^[0-9]{10}$/; 
                 return phoneRegex.test(value);
 
             case 'address':
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 return emailRegex.test(value);
 
             case 'soCMT':
-                const soCMTRegex = /^[0-9]+$/;
+                const soCMTRegex = /^[0-9]+$/; 
                 return soCMTRegex.test(value);
 
             case 'dIssue':
