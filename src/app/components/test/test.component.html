@@ -66,21 +66,11 @@
                 </div>
                 <div class="item17"><label>Địa chỉ liên hệ</label></div>
                 <div class="item18">
-                    <input type="text" class="form-control" name="uphonenumber" formControlName="uphonenumber" [ngClass]="{'red-border': uphonenumber.invalid && (uphonenumber.dirty || uphonenumber.touched), 'black-border': !uphonenumber.invalid}"/>
-                    <div *ngIf="uphonenumber.invalid && (uphonenumber.dirty || uphonenumber.touched)" class="alert alert-danger" role="alert">
-                        <div *ngFor="let error of errorMessages.uphonenumber">
-                            <div *ngIf="uphonenumber.hasError(error.type)">{{ error.message }}</div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name="uphonenumber" formControlName="uphonenumber" />
                 </div>
                 <div class="item19"><label>Địa chỉ trên hóa đơn</label></div>
                 <div class="item20">
-                    <input type="text" class="form-control" name="address" formControlName="address" [ngClass]="{'red-border': address.invalid && (address.dirty || address.touched), 'black-border': !address.invalid}"/>
-                    <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert alert-danger" role="alert">
-                        <div *ngFor="let error of errorMessages.address">
-                            <div *ngIf="address.hasError(error.type)">{{ error.message }}</div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name="address" formControlName="address"/>
                 </div>
                 <div class="item21"><label>Đại diện pháp luật</label></div>
                 <div class="item22">
@@ -94,21 +84,11 @@
                 </div>
                 <div class="item25"><label>Đối tác liên hệ</label></div>
                 <div class="item26">
-                    <input type="text" class="form-control" name="guest" formControlName="guest" [ngClass]="{'red-border': guest.invalid && (guest.dirty || guest.touched), 'black-border': !guest.invalid}"/>
-                    <div *ngIf="guest.invalid && (guest.dirty || guest.touched)" class="alert alert-danger" role="alert">
-                        <div *ngFor="let error of errorMessages.guest">
-                            <div *ngIf="guest.hasError(error.type)">{{ error.message }}</div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name="guest" formControlName="guest" />
                 </div>
                 <div class="item27"><label>Số điện thoại đối tác</label></div>
                 <div class="item28">
-                    <input type="text" class="form-control" name="gphonenumber" formControlName="gphonenumber" [ngClass]="{'red-border': gphonenumber.invalid && (gphonenumber.dirty || gphonenumber.touched), 'black-border': !gphonenumber.invalid}"/>
-                    <div *ngIf="gphonenumber.invalid && (gphonenumber.dirty || gphonenumber.touched)" class="alert alert-danger" role="alert">
-                        <div *ngFor="let error of errorMessages.gphonenumber">
-                            <div *ngIf="gphonenumber.hasError(error.type)">{{ error.message }}</div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name="gphonenumber" formControlName="gphonenumber" />
                 </div>
                 <div class="item29"><label>Quốc gia</label></div>
                 <div class="item30">
@@ -212,12 +192,7 @@
                 </div>
                 <div class="item51"><label>Nơi cấp</label></div>
                 <div class="item52">
-                    <input type="text" class="form-control" name="pIssue" formControlName="pIssue" [ngClass]="{'red-border': pIssue.invalid && (pIssue.dirty || pIssue.touched), 'black-border': !pIssue.invalid}"/>
-                    <div *ngIf="pIssue.invalid && (pIssue.dirty || pIssue.touched)" class="alert alert-danger" role="alert">
-                        <div *ngFor="let error of errorMessages.pIssue">
-                            <div *ngIf="pIssue.hasError(error.type)">{{ error.message }}</div>
-                        </div>
-                    </div>
+                    <input type="text" class="form-control" name="pIssue" formControlName="pIssue"/>
                 </div>
                 <div class="item58"><label>Theo dõi công nợ chi tiết</label></div>
                 <div class="item59"><label>Theo hạn nợ</label></div>

@@ -7,8 +7,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class DataService {
   private dataSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.loadDataFromLocalStorage());
   data$: Observable<any[]> = this.dataSource.asObservable();
+  dataService: any;
 
   constructor() {
+    window.addEventListener('storage', (event) => {
+      if (event.key === 'gridData') {
+        this.dataSource.next(this.loadDataFromLocalStorage());
+      }
+    });
   }
 
   private loadDataFromLocalStorage(): any[] {
@@ -34,5 +40,11 @@ export class DataService {
   clearData() {
     this.dataSource.next([]); 
     this.saveDataToLocalStorage([]); 
+  }
+
+  onTabChange(event: any) {
+    if (event.index === 0) { 
+      this.dataService.getData(); 
+    }
   }
 }

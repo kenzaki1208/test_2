@@ -13,6 +13,11 @@ const routes: Routes = [
     component: GridComponentComponent,
     path: 'grid',
     title: 'grid-component'
+  },
+  {
+    path: '',
+    redirectTo: '/grid',
+    pathMatch: 'full',
   }
 ];
 

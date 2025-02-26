@@ -26,3 +26,52 @@
   .btn-secondary:hover {
     background-color: #5a6268;
   }
+
+  :host ::ng-deep .code {     //nhắm đến phần tử gốc của component (:host) và sử dụng ::ng-deep để áp dụng style lên tất cả các phần tử con bên trong, bất kể tính đóng gói của Angular.
+    font-weight: bold;
+  }
+  :host ::ng-deep .code:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: #bbff00 !important;
+  }
+  :host ::ng-deep.name {
+    font-weight: bold;
+  }
+  :host ::ng-deep .name:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: #ffbb00 !important;
+  }
+  :host ::ng-deep.lastname {
+    font-weight: bold;
+  }
+  :host ::ng-deep .lastname:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: rgb(119, 237, 119) !important;
+  }
+  :host ::ng-deep.phone {
+    font-weight: bold;
+  }
+  :host ::ng-deep .phone:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: rgb(167, 167, 243) !important;
+  }
+  :host ::ng-deep.Email {
+    font-weight: bold;
+  }
+  :host ::ng-deep .Email:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: rgb(237, 155, 155) !important;
+  }
+  :host ::ng-deep.CMT {
+    font-weight: bold;
+  }
+  :host ::ng-deep .CMT:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: rgb(176, 168, 168) !important;
+  }
+  :host ::ng-deep.dIssue {
+    font-weight: bold;
+  }
+  :host ::ng-deep .dIssue:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: rgb(243, 160, 243) !important;
+  }
+  :host ::ng-deep.pIssue {
+    font-weight: bold;
+  }
+  :host ::ng-deep .pIssue:not(.wj-state-selected):not(.wj-state-multi-selected) {
+    background-color: rgb(232, 207, 144) !important;
+  }

@@ -11,7 +11,6 @@ import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
 import { DataInterceptor } from './components/test/data.interceptor';
 import { DataService } from './components/test/data.service';
 import { GridComponentComponent } from './components/test_01/grid-component.component'
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,7 @@ import { GridComponentComponent } from './components/test_01/grid-component.comp
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    WjGridModule,
+    WjGridModule
   ],
   providers: [
     DataService,

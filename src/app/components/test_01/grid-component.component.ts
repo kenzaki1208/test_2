@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../test/data.service';
 import { Router } from '@angular/router';
+import * as wjGrid from '@grapecity/wijmo.grid';
+import * as wjCore from '@grapecity/wijmo';
 
 @Component({
   selector: 'app-grid-component',
@@ -24,4 +26,17 @@ export class GridComponentComponent implements OnInit {
   goBack() {
     this.router.navigate(['/test']);
   }
+
+  formatItem(flexGird: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) {
+    if (e.panel == flexGird.cells) {
+        const columnBinding = flexGird.columns[e.col].binding;
+
+        if (columnBinding === 'datacode') {
+            wjCore.toggleClass(e.cell, 'code', true); 
+        }
+        else if (columnBinding === 'uName') {
+            wjCore.toggleClass(e.cell, 'name', true); 
+        }
+    }
+}
 }
