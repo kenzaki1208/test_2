@@ -359,7 +359,7 @@ export class TestComponent  {
       console.log("Form is invalid");
 
       this.dataService.addData(this.data[0]); 
-      this.router.navigate(['/grid']);
+      this.router.navigate(['/origin']);
       console.log("Data sent to DataService:", this.data);
     }
 

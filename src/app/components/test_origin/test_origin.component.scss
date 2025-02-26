@@ -20,9 +20,26 @@
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;margin-right: 10px; 
+    cursor: pointer;
+    margin-right: 10px; 
   }
-  
+
   .btn-add:hover {
     background-color: rgb(29, 183, 29);
+  }
+
+  .btn-grid {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: rgb(149, 47, 245);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    left: 30px; 
+  }
+  
+  .btn-grid:hover {
+    background-color: rgb(97, 11, 178);
   }

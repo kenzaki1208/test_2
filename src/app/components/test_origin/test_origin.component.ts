@@ -48,4 +48,8 @@ export class TestOriginComponent implements OnInit {
           alert('Vui lòng chọn một dòng để xóa!');
         }
     }
+
+    Grid() {
+        this.router.navigate(['/grid']);
+    }
 }
