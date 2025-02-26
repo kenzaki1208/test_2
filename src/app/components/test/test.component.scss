@@ -321,7 +321,7 @@
         ". . . . ."
         ". . . . button28";
     grid-template-columns: 200px 1fr 200px 1fr 1fr; 
-    gap: 5px;
+    gap: 15px;
     padding: 20px;
     background-color: rgb(227, 227, 227);
     width: 100%;
@@ -329,6 +329,11 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
+
+.form-row {
+    display: contents; 
+}
+
 
 .grid-container input,
 .grid-container select {
@@ -368,9 +373,10 @@
 .alert-danger {
     color: red !important;
     font-size: 14px;
-    padding: 5px;
+    padding: 5px 10px;
     border: none;
     background: none;
+    margin-top: 10px;
 }
 
 .item56, .item57, .item58 {
@@ -406,6 +412,8 @@
         flex-direction: column;
         background-color: rgb(227, 227, 227);
         padding: 15px;
+        grid-template-columns: 1fr; 
+        gap: 10px;
     }
 
     .grid-container label,
@@ -421,6 +429,15 @@
         padding: 5px 0;
         margin-left: 0; 
     }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .label, .input {
+        width: 100%;
+    }
+
 
     .grid-container input,
     .grid-container select {
