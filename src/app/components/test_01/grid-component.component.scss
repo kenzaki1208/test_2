@@ -1,16 +1,16 @@
 .btn-danger {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #dc3545;
+    background-color: rgb(111, 111, 247);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px; // Thêm khoảng cách giữa hai nút
+    margin-right: 10px; 
   }
   
   .btn-danger:hover {
-    background-color: #c82333;
+    background-color: rgb(36, 36, 191);
   }
   
   .btn-secondary {
@@ -26,6 +26,23 @@
   .btn-secondary:hover {
     background-color: #5a6268;
   }
+
+  .btn-delete {
+    margin-top: 20px;
+    padding: 10.5px 20px;
+    background-color: rgb(247, 51, 51);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    left: 10px;
+  }
+
+  .btn-delete:hover {
+    background-color: rgb(198, 8, 8);
+  }
+  
 
   :host ::ng-deep .code {     //nhắm đến phần tử gốc của component (:host) và sử dụng ::ng-deep để áp dụng style lên tất cả các phần tử con bên trong, bất kể tính đóng gói của Angular.
     font-weight: bold;

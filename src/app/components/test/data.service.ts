@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
+
   private dataSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.loadDataFromLocalStorage());
   data$: Observable<any[]> = this.dataSource.asObservable();
   dataService: any;
@@ -46,5 +47,10 @@ export class DataService {
     if (event.index === 0) { 
       this.dataService.getData(); 
     }
+  }
+
+  updateData(newData: any[]) {
+    this.dataSource.next(newData);
+    this.saveDataToLocalStorage(newData);
   }
 }

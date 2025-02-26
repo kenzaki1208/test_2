@@ -1,4 +1,4 @@
-<wj-flex-grid [itemsSource]="data" [isReadOnly]="true" [selectionMode]="'Row'" style="height: 800px; width: 5000px;">
+<wj-flex-grid #flexGrid [itemsSource]="data" [isReadOnly]="true" [selectionMode]="'Row'" style="height: 800px; width: 5000px;">
 
     <!-- Định nghĩa cột -->
     <wj-flex-grid-column [header]="'Mã'" [binding]="'datacode'" [cssClass]="'code'" [width]="'3*'"></wj-flex-grid-column>
@@ -36,3 +36,4 @@
 
   <button class="btn btn-danger" (click)="resetData()">Reset Dữ Liệu</button>
   <button class="btn btn-secondary" (click)="goBack()">Quay Lại</button>
+  <button class="btn btn-delete" (click)="deleterow()">Xóa</button>

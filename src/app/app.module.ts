@@ -11,11 +11,13 @@ import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
 import { DataInterceptor } from './components/test/data.interceptor';
 import { DataService } from './components/test/data.service';
 import { GridComponentComponent } from './components/test_01/grid-component.component'
+import { TestOriginComponent } from './components/test_origin/test_origin.component';
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    GridComponentComponent
+    GridComponentComponent,
+    TestOriginComponent
   ],
   imports: [
     BrowserModule,
