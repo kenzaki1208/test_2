@@ -26,43 +26,44 @@ export class TestComponent  {
   title = 'angular7-reactive-postMethod';
   myform: FormGroup;	  
   data: any[] = [];
+  customers: any[] = [];
 
     constructor(private http: HttpClient, private fb: FormBuilder, private dataService: DataService,
       private router: Router) {
       this.myform = this.fb.group({
         datacode: ['', [Validators.required]],
-        group: ['', [Validators.required]],
+        group: [''],
         uName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
-        lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
+        lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
         object: ['', [Validators.required]],
-        datacode2: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-        middlename: ['', [Validators.required]],
+        datacode2: [''],
+        middlename: [''],
         uphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
-        address: ['', [Validators.required]],
-        legal: ['', [Validators.required]],
-        position: ['', [Validators.required]],
-        guest: ['', [Validators.required]],
+        address: [''],
+        legal: [''],
+        position: [''],
+        guest: [''],
         gphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
-        country: ['', [Validators.required]],
-        file: ['', [Validators.required]],
-        fax: ['', [Validators.required]],
-        unit: ['', [Validators.required]],
-        objective: ['', [Validators.required]],
-        stream: ['', [Validators.required]],
-        region: ['', [Validators.required]],
+        country: [''],
+        file: [''],
+        fax: [''],
+        unit: [''],
+        objective: [''],
+        stream: [''],
+        region: [''],
         yourphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
-        money: ['', [Validators.required]],
+        money: [''],
         eMail: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
         soCMT: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-        optionsRadios: ['', [Validators.required]],
-        optionChecked: [false, Validators.requiredTrue],
-        password: ['', [Validators.required]],
+        optionsRadios: [''],
+        optionChecked: [false],
+        password: [''],
         dIssue: ['', [Validators.required, this.dateNotInFuture()]],
-        pIssue: ['', [Validators.required]],
-        checkbox: [false, Validators.requiredTrue],
-        checkbox2: [false, Validators.requiredTrue],
-        Theoky: ['', [Validators.required]],
-        ngay: ['', [Validators.required]],
+        pIssue: [''],
+        checkbox: [false],
+        checkbox2: [false],
+        Theoky: [''],
+        ngay: [''],
       });
     }
 
@@ -205,7 +206,7 @@ export class TestComponent  {
       ],
       lastName: [
         { type: 'required', message: 'Họ không được bỏ trống.' },
-        { type: 'minlength', message: 'Họ không được ít hơn 3 kí tự.' },
+        { type: 'minlength', message: 'Họ không được ít hơn 2 kí tự.' },
         { type: 'maxlength', message: 'Họ không được nhiều hơn 10 kí tự.' },
         { type: 'pattern', message: 'Họ không được sử dụng số hoặc kí tự đặc biệt.' },
       ],
@@ -313,13 +314,113 @@ export class TestComponent  {
 
   }
 
+
+  ngOnInit() {
+    console.log('customers trong ngOnInit:', this.customers);
+    this.loadAllCustomers(); 
+  }
+
+  loadAllCustomers() {
+    this.http.get<any>('assets/danhmucdoituong.json').subscribe( 
+      (response) => {
+        if (response && response.ParentTable) {
+          this.customers = response.ParentTable; 
+          console.log('Danh sách khách hàng:', this.customers);
+          console.log('Kiểu dữ liệu response:', Array.isArray(response.ParentTable) ? 'Mảng' : 'Không phải mảng');
+        } else {
+          console.error('Dữ liệu JSON không chứa ParentTable:', response);
+          this.customers = [];
+          alert('Dữ liệu JSON không hợp lệ. Vui lòng kiểm tra file JSON!');
+        }
+      },
+      (error) => {
+        console.error('Lỗi khi tải danh sách:', error);
+        alert('Không thể tải danh sách khách hàng. Vui lòng kiểm tra file JSON! Chi tiết: ' + error.message);
+      }
+    );
+  }
+
+  loadDataFromJson(eventTarget: EventTarget | null) {
+    const selectElement = eventTarget as HTMLSelectElement;
+    const value = selectElement?.value;
+    console.log('Giá trị từ dropdown:', value);
+  
+    if (!value) {
+      console.error('Không có giá trị được chọn');
+      return;
+    }
+  
+    const customerId = Number(value);
+    console.log('customerId:', customerId);
+  
+    if (customerId === undefined || customerId === null || isNaN(customerId)) {
+      console.error('customerId không hợp lệ:', value);
+      return;
+    }
+  
+    const customerData = this.customers.find(customer => customer.Id === customerId);
+    console.log('Dữ liệu khách hàng tìm thấy:', customerData);
+    if (!customerData) {
+      console.warn('Không tìm thấy khách hàng với Id:', customerId);
+      return;
+    }
+  
+    console.log('Dữ liệu khách hàng được chọn:', customerData);
+    const fullName = customerData.Name.split(' ');
+    const lastName = fullName[0] || ''; 
+    const middleName = fullName.length > 2 ? fullName.slice(1, -1).join(' ') : ''; 
+    const firstName = fullName[fullName.length - 1] || ''; 
+  
+    this.myform.patchValue({
+      datacode: customerData.Code || '',
+      group: customerData.ParentCode === 'KHACHLE' ? 'customer' : 'admin',
+      uName: firstName, 
+      lastName: lastName, 
+      object: customerData.CustomerTypeName === 'Khách lẻ' ? 'customer' : 'admin',
+      optionChecked: customerData.IsCustomer || false,
+      datacode2: customerData.TaxRegNo || '',
+      middlename: customerData.ShortName || '',
+      uphonenumber: customerData.Tel || '', 
+      address: customerData.Address || '',
+      legal: customerData.OwnerName || '',
+      position: customerData.OwnerTitle || '',
+      guest: customerData.Person || '',
+      gphonenumber: customerData.PersonTel || '',
+      country: customerData.Country || '',
+      optionsRadios: customerData.CustomerFileNo || '',
+      fax: customerData.Fax || '',
+      unit: customerData.BranchCode || '',
+      objective: customerData.ItemCatgId ? 'electric' : '',
+      stream: customerData.SalesChannelId ? 'shopee' : '',
+      region: customerData.TerritoryId ? 'North' : '',
+      money: customerData.CusCurrencyCode || '',
+      yourphonenumber: customerData.Tel || '',
+      eMail: customerData.Email || '',
+      soCMT: customerData.IdCardNo || '',
+      dIssue: customerData.IdCardDate && !isNaN(new Date(customerData.IdCardDate).getTime()) 
+        ? new Date(customerData.IdCardDate).toISOString().split('T')[0] 
+        : '',
+      pIssue: customerData.IdCardPlace || '',
+      checkbox: customerData.IsUsingDuePayment || false,
+      checkbox2: customerData.IsDebtByContract || false,
+      Theoky: customerData.PeriodPaymentId || '',
+      ngay: customerData.DueDateDefault || ''
+    });
+  
+    console.log('Dữ liệu form sau khi điền:', this.myform.value);
+    this.myform.markAllAsTouched(); 
+  }
+
+
+  goBack() {
+    this.router.navigate(['/origin']);
+  }
+
+
   onSubmit(user: any): void {
     console.log("Form value:", this.myform.value); 
     console.log(user);    
     this.validateForm(); 
-
-
-
       this.data = [
         {
           datacode: this.myform.value.datacode,

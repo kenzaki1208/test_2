@@ -17,7 +17,7 @@ import { TestOriginComponent } from './components/test_origin/test_origin.compon
     AppComponent,
     TestComponent,
     GridComponentComponent,
-    TestOriginComponent
+    TestOriginComponent,
   ],
   imports: [
     BrowserModule,

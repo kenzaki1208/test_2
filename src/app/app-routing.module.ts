@@ -21,6 +21,11 @@ const routes: Routes = [
     title: 'Test-origin'
   },
   {
+    component: TestOriginComponent,
+    path: 'test02',
+    title: 'Test_02',
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full',

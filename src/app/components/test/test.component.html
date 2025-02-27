@@ -2,6 +2,15 @@
 <div class="container">
     <div class="panel panel-primary">
         <div class="panel-body">
+            <div class="form-group" *ngIf="customers.length > 0">
+                <label>Chọn khách hàng để kiểm tra:</label>
+                <select class="form-control" (change)="loadDataFromJson($event.target)">
+                    <option value="">-- Chọn khách hàng --</option>
+                    <option *ngFor="let customer of customers" [value]="customer.Id">
+                        {{ customer.Name }} (ID: {{ customer.Id }})
+                    </option>
+                </select>
+            </div>
         <form  [formGroup]="myform" (ngSubmit) = "onSubmit(myform.value)">
             <div class="grid-container">
                 <div class="item56"><label >Thông tin chung</label></div>
@@ -18,8 +27,8 @@
                 <div class="item4">
                     <select class="form-control"  name="group" formControlName="group">
                         <option value="">select</option>
-                        <option value="customer">Khách hàng</option>
-                        <option value="admin">Admin</option>
+                        <option value="admin">Khách hàng 1</option>
+                        <option value="customer">Khách hàng 2</option>
                     </select>
                     
                 </div>
@@ -27,11 +36,11 @@
                 <div class="item6">
                     <input type="text" class="form-control" name="uName" formControlName="uName" [ngClass]="{'red-border': uName.invalid && (uName.dirty || uName.touched), 'black-border': !uName.invalid}"/>
                     <div *ngIf="uName.invalid && (uName.dirty || uName.touched)" class="alert alert-danger" role="alert">
-                      <div *ngFor="let error of errorMessages.uName">
-                        <div *ngIf="uName.hasError(error.type)">{{ error.message }}</div>
-                      </div>
+                        <div *ngFor="let error of errorMessages.uName">
+                            <div *ngIf="uName.hasError(error.type)">{{ error.message }}</div>
+                        </div>
                     </div>
-                  </div>                  
+                </div>                  
                 <div class="item7"><label>Họ</label></div>
                 <div class="item8">
                     <input type="text" class="form-control" name="lastName" formControlName="lastName" [ngClass]="{'red-border': lastName.invalid && (lastName.dirty || lastName.touched), 'black-border': !lastName.invalid}"/>
@@ -210,6 +219,11 @@
                 <div class="item66">
                     <input type="text" class="form-control" name="ngay" formControlName="ngay"/>
                     
+                </div>
+                <div class="item67">
+                    <div class="form-group">
+                      <button type="button" class="btn btn-secondary" (click)="goBack()">Quay Lại</button>
+                    </div>
                 </div>
                 <div class="item55">
                     <div class="form-group">
