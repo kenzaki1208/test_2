@@ -1,5 +1,5 @@
 <div>
-    <wj-flex-grid #flexGrid [itemsSource]="data" [isReadOnly]="true" [selectionMode]="'Row'" style="height: 800px; width: 1890px;">
+    <wj-flex-grid #flexGrid [itemsSource]="data" [isReadOnly]="true" [selectionMode]="'Row'" style="height: 800px; width: 2000px;">
         <wj-flex-grid-column [header]="'Mã'" [binding]="'datacode'" [cssClass]="'code'" [width]="'3*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Tên'" [binding]="'uName'" [cssClass]="'name'" [width]="'2.5*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Họ'" [binding]="'lastName'" [cssClass]="'lastname'" [width]="'2.5*'"></wj-flex-grid-column>
@@ -7,7 +7,6 @@
         <wj-flex-grid-column [header]="'E-mail'" [binding]="'eMail'" [cssClass]="'Email'" [width]="'3.5*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Số CMT/CCCD'" [binding]="'soCMT'" [cssClass]="'CMT'" [width]="'3*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Ngày cấp'" [binding]="'dIssue'" [cssClass]="'dIssue'" [width]="'2.5*'"></wj-flex-grid-column>
-        <wj-flex-grid-column [header]="'Nơi cấp'" [binding]="'pIssue'" [cssClass]="'pIssue'" [width]="'2.5*'"></wj-flex-grid-column>
     </wj-flex-grid>
     <button class="btn btn-add" (click)="addNewRow()">Thêm mới</button>
     <button class="btn btn-delete" (click)="deleteSelectedRow()">Xóa</button>

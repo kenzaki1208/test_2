@@ -27,6 +27,7 @@ export class TestComponent  {
   myform: FormGroup;	  
   data: any[] = [];
   customers: any[] = [];
+  gridData: any[] = [];
 
     constructor(private http: HttpClient, private fb: FormBuilder, private dataService: DataService,
       private router: Router) {
@@ -324,7 +325,8 @@ export class TestComponent  {
     this.http.get<any>('assets/danhmucdoituong.json').subscribe( 
       (response) => {
         if (response && response.ParentTable) {
-          this.customers = response.ParentTable; 
+          this.customers = response.ParentTable;
+          this.gridData = [...this.customers]; 
           console.log('Danh sách khách hàng:', this.customers);
           console.log('Kiểu dữ liệu response:', Array.isArray(response.ParentTable) ? 'Mảng' : 'Không phải mảng');
         } else {

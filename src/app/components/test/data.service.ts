@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import * as wjCore from '@grapecity/wijmo';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class DataService {
   private dataSource: BehaviorSubject<any[]> = new BehaviorSubject<any[]>(this.loadDataFromLocalStorage());
   data$: Observable<any[]> = this.dataSource.asObservable();
   dataService: any;
+  data!: wjCore.CollectionView<never>;
 
   constructor() {
     window.addEventListener('storage', (event) => {
@@ -52,5 +54,10 @@ export class DataService {
   updateData(newData: any[]) {
     this.dataSource.next(newData);
     this.saveDataToLocalStorage(newData);
+  }
+
+  resetData() {
+    this.dataService.clearData();
+    this.data = new wjCore.CollectionView([]); 
   }
 }

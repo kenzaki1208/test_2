@@ -39,7 +39,7 @@ export class TestOriginComponent implements OnInit {
           return;
         }
         const selectedRow = this.flexGrid.selectedItems[0];
-        console.log('Selected Row:', selectedRow); // Debug dòng được chọn
+        console.log('Selected Row:', selectedRow); 
         if (selectedRow) {
           this.data.remove(selectedRow);
           this.flexGrid.collectionView.refresh();

@@ -1,88 +1,105 @@
+/* Nút đã có sẵn - giữ nguyên */
 .btn-danger {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: rgb(111, 111, 247);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px; 
-  }
-  
-  .btn-danger:hover {
-    background-color: rgb(36, 36, 191);
-  }
-  
-  .btn-secondary {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #5a6268;
-  }
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: rgb(111, 111, 247);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
-  .btn-delete {
-    margin-top: 20px;
-    padding: 10.5px 20px;
-    background-color: rgb(247, 51, 51);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    left: 10px;
-  }
+.btn-danger:hover {
+  background-color: rgb(36, 36, 191);
+}
 
-  .btn-delete:hover {
-    background-color: rgb(198, 8, 8);
-  }
-  
+.btn-secondary {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  :host ::ng-deep .code {     //nhắm đến phần tử gốc của component (:host) và sử dụng ::ng-deep để áp dụng style lên tất cả các phần tử con bên trong, bất kể tính đóng gói của Angular.
-    font-weight: bold;
-  }
-  :host ::ng-deep .code:not(.wj-state-selected):not(.wj-state-multi-selected) {
-    background-color: #bbff00 !important;
-  }
-  :host ::ng-deep.name {
-    font-weight: bold;
-  }
-  :host ::ng-deep .name:not(.wj-state-selected):not(.wj-state-multi-selected) {
-    background-color: #ffbb00 !important;
-  }
-  :host ::ng-deep.lastname {
-    font-weight: bold;
-  }
-  :host ::ng-deep .lastname:not(.wj-state-selected):not(.wj-state-multi-selected) {
-    background-color: rgb(119, 237, 119) !important;
-  }
-  :host ::ng-deep.phone {
-    font-weight: bold;
-  }
-  :host ::ng-deep .phone:not(.wj-state-selected):not(.wj-state-multi-selected) {
-    background-color: rgb(167, 167, 243) !important;
-  }
-  :host ::ng-deep.Email {
-    font-weight: bold;
-  }
-  :host ::ng-deep .Email:not(.wj-state-selected):not(.wj-state-multi-selected) {
-    background-color: rgb(237, 155, 155) !important;
-  }
-  :host ::ng-deep.CMT {
-    font-weight: bold;
-  }
-  :host ::ng-deep .CMT:not(.wj-state-selected):not(.wj-state-multi-selected) {
-    background-color: rgb(176, 168, 168) !important;
-  }
-  :host ::ng-deep.dIssue {
-    font-weight: bold;
-  }
-  :host ::ng-deep .dIssue:not(.wj-state-selected):not(.wj-state-multi-selected) {
-    background-color: rgb(243, 160, 243) !important;
-  }
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+.btn-delete {
+  margin-top: 20px;
+  padding: 10.5px 20px;
+  background-color: rgb(247, 51, 51);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  left: 10px;
+}
+
+.btn-delete:hover {
+  background-color: rgb(198, 8, 8);
+}
+
+/* Style cho highlight row */
+.wj-row.selected {
+  background-color: #e0e0e0 !important; /* Màu nền khi row được chọn */
+  font-weight: bold;
+}
+
+/* Style cho highlight cell */
+.wj-cell-highlight {
+  background-color: #ffcccc !important; /* Màu nền khi cell được highlight */
+}
+
+/* Giữ nguyên các style ::ng-deep hiện có và bổ sung nếu cần */
+:host ::ng-deep .code {
+  font-weight: bold;
+}
+:host ::ng-deep .code:not(.wj-state-selected):not(.wj-state-multi-selected) {
+  background-color: #bbff00 !important;
+}
+:host ::ng-deep .name {
+  font-weight: bold;
+}
+:host ::ng-deep .name:not(.wj-state-selected):not(.wj-state-multi-selected) {
+  background-color: #ffbb00 !important;
+}
+:host ::ng-deep .lastname {
+  font-weight: bold;
+}
+:host ::ng-deep .lastname:not(.wj-state-selected):not(.wj-state-multi-selected) {
+  background-color: rgb(119, 237, 119) !important;
+}
+:host ::ng-deep .phone {
+  font-weight: bold;
+}
+:host ::ng-deep .phone:not(.wj-state-selected):not(.wj-state-multi-selected) {
+  background-color: rgb(167, 167, 243) !important;
+}
+:host ::ng-deep .Email {
+  font-weight: bold;
+}
+:host ::ng-deep .Email:not(.wj-state-selected):not(.wj-state-multi-selected) {
+  background-color: rgb(237, 155, 155) !important;
+}
+:host ::ng-deep .CMT {
+  font-weight: bold;
+}
+:host ::ng-deep .CMT:not(.wj-state-selected):not(.wj-state-multi-selected) {
+  background-color: rgb(176, 168, 168) !important;
+}
+:host ::ng-deep .dIssue {
+  font-weight: bold;
+}
+:host ::ng-deep .dIssue:not(.wj-state-selected):not(.wj-state-multi-selected) {
+  background-color: rgb(243, 160, 243) !important;
+}
+
+/* Nếu muốn tùy chỉnh thêm màu sắc khi hover trên row */
+.wj-row:hover {
+  background-color: #f5f5f5 !important; /* Màu khi hover qua row */
+}

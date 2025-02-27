@@ -1,4 +1,6 @@
-<wj-flex-grid #flexGrid [itemsSource]="data" [isReadOnly]="true" [selectionMode]="'Row'" style="height: 800px; width: 5000px;">
+<wj-flex-grid #flexGrid [itemsSource]="data" [isReadOnly]="false" [selectionMode]="'Row'" style="height: 800px; width: 5000px;" (formatItem)="formatItem(flexGrid, $event)"
+(selectionChanged)="onSelectionChanged($event)"
+(initialized)="onGridInitialized()">
 
     <!-- Định nghĩa cột -->
     <wj-flex-grid-column [header]="'Mã'" [binding]="'datacode'" [cssClass]="'code'" [width]="'3*'"></wj-flex-grid-column>
@@ -32,7 +34,7 @@
     <wj-flex-grid-column [header]="'Theo kì'" [binding]="'Theoky'" [width]="'2*'"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Theo hạn'" [binding]="'ngay'" [width]="'2*'"></wj-flex-grid-column>
   
-  </wj-flex-grid>
+</wj-flex-grid>
 
   <button class="btn btn-danger" (click)="resetData()">Reset Dữ Liệu</button>
   <button class="btn btn-secondary" (click)="goBack()">Quay Lại</button>
