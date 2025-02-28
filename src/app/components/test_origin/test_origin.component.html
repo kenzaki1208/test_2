@@ -1,8 +1,10 @@
 <div>
-    <wj-flex-grid #flexGrid [itemsSource]="data" [isReadOnly]="true" [selectionMode]="'Row'" style="height: 800px; width: 2000px;">
+    <wj-flex-grid #flex #flexGrid [itemsSource]="data" [isReadOnly]="false" [selectionMode]="'Row'" style="height: 800px; width: 2000px;" (formatItem)="formatItem(flexGrid, $event)"
+    (selectionChanged)="onSelectionChanged(flexGrid)"
+    (initialized)="initializeGrid(flex)">
         <wj-flex-grid-column [header]="'Mã'" [binding]="'datacode'" [cssClass]="'code'" [width]="'3*'"></wj-flex-grid-column>
-        <wj-flex-grid-column [header]="'Tên'" [binding]="'uName'" [cssClass]="'name'" [width]="'2.5*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Họ'" [binding]="'lastName'" [cssClass]="'lastname'" [width]="'2.5*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Tên'" [binding]="'uName'" [cssClass]="'name'" [width]="'2.5*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Điện thoại'" [binding]="'yourphonenumber'" [cssClass]="'phone'" [width]="'3*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'E-mail'" [binding]="'eMail'" [cssClass]="'Email'" [width]="'3.5*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Số CMT/CCCD'" [binding]="'soCMT'" [cssClass]="'CMT'" [width]="'3*'"></wj-flex-grid-column>

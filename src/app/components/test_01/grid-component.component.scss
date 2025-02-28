@@ -44,62 +44,26 @@
   background-color: rgb(198, 8, 8);
 }
 
-/* Style cho highlight row */
-.wj-row.selected {
-  background-color: #e0e0e0 !important; /* Màu nền khi row được chọn */
+:host ::ng-deep .wj-row.selected {
+  background-color: #e0e0e0 ; 
   font-weight: bold;
 }
 
-/* Style cho highlight cell */
-.wj-cell-highlight {
-  background-color: #ffcccc !important; /* Màu nền khi cell được highlight */
+
+:host ::ng-deep .wj-row:hover {
+  background-color: #f5f5f5 !important; 
 }
 
-/* Giữ nguyên các style ::ng-deep hiện có và bổ sung nếu cần */
-:host ::ng-deep .code {
-  font-weight: bold;
-}
-:host ::ng-deep .code:not(.wj-state-selected):not(.wj-state-multi-selected) {
-  background-color: #bbff00 !important;
-}
-:host ::ng-deep .name {
-  font-weight: bold;
-}
-:host ::ng-deep .name:not(.wj-state-selected):not(.wj-state-multi-selected) {
-  background-color: #ffbb00 !important;
-}
-:host ::ng-deep .lastname {
-  font-weight: bold;
-}
-:host ::ng-deep .lastname:not(.wj-state-selected):not(.wj-state-multi-selected) {
-  background-color: rgb(119, 237, 119) !important;
-}
-:host ::ng-deep .phone {
-  font-weight: bold;
-}
-:host ::ng-deep .phone:not(.wj-state-selected):not(.wj-state-multi-selected) {
-  background-color: rgb(167, 167, 243) !important;
-}
-:host ::ng-deep .Email {
-  font-weight: bold;
-}
-:host ::ng-deep .Email:not(.wj-state-selected):not(.wj-state-multi-selected) {
-  background-color: rgb(237, 155, 155) !important;
-}
-:host ::ng-deep .CMT {
-  font-weight: bold;
-}
-:host ::ng-deep .CMT:not(.wj-state-selected):not(.wj-state-multi-selected) {
-  background-color: rgb(176, 168, 168) !important;
-}
-:host ::ng-deep .dIssue {
-  font-weight: bold;
-}
-:host ::ng-deep .dIssue:not(.wj-state-selected):not(.wj-state-multi-selected) {
-  background-color: rgb(243, 160, 243) !important;
+:host ::ng-deep .wj-cells .wj-cell.wj-state-selected {
+  background-color: red;
+  color: white;
 }
 
-/* Nếu muốn tùy chỉnh thêm màu sắc khi hover trên row */
-.wj-row:hover {
-  background-color: #f5f5f5 !important; /* Màu khi hover qua row */
+:host ::ng-deep .wj-cells .wj-cell.wj-state-multi-selected {
+  background-color: rgb(18, 229, 18);
+  color: white;
+}
+
+:host ::ng-deep .wj-flexgrid .cell-changed {
+  background-color: lightpink;
 }

@@ -369,9 +369,8 @@ export class TestComponent  {
   
     console.log('Dữ liệu khách hàng được chọn:', customerData);
     const fullName = customerData.Name.split(' ');
-    const lastName = fullName[0] || ''; 
-    const middleName = fullName.length > 2 ? fullName.slice(1, -1).join(' ') : ''; 
-    const firstName = fullName[fullName.length - 1] || ''; 
+    const lastName = fullName[0] || '';
+    const firstName = fullName.length > 1 ? fullName.slice(1).join(' ') : ''; 
   
     this.myform.patchValue({
       datacode: customerData.Code || '',

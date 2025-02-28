@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import * as wjGrid from '@grapecity/wijmo.grid';
 import * as wjCore from '@grapecity/wijmo';
 import { WjFlexGrid } from '@grapecity/wijmo.angular2.grid';
+import { EditHighlighter } from './edit-highlighter';
 
 @Component({
   selector: 'app-grid-component',
@@ -25,9 +26,10 @@ export class GridComponentComponent implements OnInit {
     });
   }
 
-  onGridInitialized() {
-    console.log('FlexGrid initialized:', this.flexGrid);
-  }
+  initializeGrid(grid: any) {
+    new EditHighlighter(grid, 'cell-changed');
+  }   
+
 
   resetData() {
     this.dataService.clearData();

@@ -1,12 +1,12 @@
-<wj-flex-grid #flexGrid [itemsSource]="data" [isReadOnly]="false" [selectionMode]="'Row'" style="height: 800px; width: 5000px;" (formatItem)="formatItem(flexGrid, $event)"
-(selectionChanged)="onSelectionChanged($event)"
-(initialized)="onGridInitialized()">
+<wj-flex-grid #flex #flexGrid [itemsSource]="data" [isReadOnly]="false" [selectionMode]="'Row'" style="height: 800px; width: 5000px;" (formatItem)="formatItem(flexGrid, $event)"
+(selectionChanged)="onSelectionChanged(flexGrid)"
+(initialized)="initializeGrid(flex)">
 
     <!-- Định nghĩa cột -->
     <wj-flex-grid-column [header]="'Mã'" [binding]="'datacode'" [cssClass]="'code'" [width]="'3*'"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Nhóm mẹ'" [binding]="'group'" [width]="'3*'"></wj-flex-grid-column>
-    <wj-flex-grid-column [header]="'Tên'" [binding]="'uName'" [cssClass]="'name'" [width]="'2.5*'"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Họ'" [binding]="'lastName'" [cssClass]="'lastname'" [width]="'2.5*'"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'Tên'" [binding]="'uName'" [cssClass]="'name'" [width]="'3.5*'"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Loại đối tượng'" [binding]="'object'" [width]="'3*'"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Là khách hàng'" [binding]="'optionChecked'" [width]="'3*'"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Mã số thuế'" [binding]="'datacode2'" [width]="'3*'"></wj-flex-grid-column>
