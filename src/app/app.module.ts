@@ -12,12 +12,14 @@ import { DataInterceptor } from './components/test/data.interceptor';
 import { DataService } from './components/test/data.service';
 import { GridComponentComponent } from './components/test_01/grid-component.component'
 import { TestOriginComponent } from './components/test_origin/test_origin.component';
+import { Test03Component } from './components/test_03/test_03.component';
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     GridComponentComponent,
     TestOriginComponent,
+    Test03Component
   ],
   imports: [
     BrowserModule,

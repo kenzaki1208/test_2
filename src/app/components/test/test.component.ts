@@ -33,146 +33,56 @@ export class TestComponent  {
       private router: Router) {
       this.myform = this.fb.group({
         datacode: ['', [Validators.required]],
-        group: [''],
         uName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
         lastName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(10), Validators.pattern('^[a-zA-ZÀ-ỹ\\s]+$')]],
         object: ['', [Validators.required]],
-        datacode2: [''],
-        middlename: [''],
         uphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
-        address: [''],
-        legal: [''],
-        position: [''],
-        guest: [''],
         gphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
-        country: [''],
-        file: [''],
-        fax: [''],
-        unit: [''],
-        objective: [''],
-        stream: [''],
-        region: [''],
         yourphonenumber: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
-        money: [''],
-        eMail: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
         soCMT: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-        optionsRadios: [''],
-        optionChecked: [false],
-        password: [''],
         dIssue: ['', [Validators.required, this.dateNotInFuture()]],
-        pIssue: [''],
-        checkbox: [false],
-        checkbox2: [false],
-        Theoky: [''],
-        ngay: [''],
+        eMail: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')]],
+        datacode2: [''], middlename: [''], group: [''], address: [''], legal: [''], position: [''], guest: [''],
+        country: [''], file: [''], fax: [''], unit: [''], objective: [''], stream: [''], region: [''], money: [''],
+        optionsRadios: [''], password: [''], pIssue: [''], Theoky: [''], ngay: [''],
+        optionChecked: [false], checkbox: [false], checkbox2: [false],
       });
     }
+    get formData() { return this.myform.controls; };
 
-
-
-     get formData() { return this.myform.controls; };
-
-    get datacode() {
-      return this.myform.get('datacode')!;
-    }
-    get group() {
-      return this.myform.get('group')!;
-    }
-    get uName() {
-      return this.myform.get('uName')!;
-    }
-    get lastName() {
-      return this.myform.get('lastName')!;
-    }
-    get object() {
-      return this.myform.get('object')!;
-    }
-    get datacode2() {
-      return this.myform.get('datacode2')!;
-    }
-    get middlename() {
-      return this.myform.get('middlename')!;
-    }
-    get uphonenumber() {
-      return this.myform.get('uphonenumber')!;
-    }
-    get address() {
-      return this.myform.get('address')!;
-    }
-    get legal() {
-      return this.myform.get('legal')!;
-    }
-    get position() {
-      return this.myform.get('position')!;
-    }
-    get guest() {
-      return this.myform.get('guest')!;
-    }
-    get gphonenumber() {
-      return this.myform.get('gphonenumber')!;
-    }
-    get country() {
-      return this.myform.get('country')!;
-    }
-    get file() {
-      return this.myform.get('file')!;
-    }
-    get fax() {
-      return this.myform.get('fax')!;
-    }
-    get unit() {
-      return this.myform.get('unit')!;
-    }
-    get objective() {
-      return this.myform.get('objective')!;
-    }
-    get stream() {
-      return this.myform.get('stream')!;
-    }
-    get region() {
-      return this.myform.get('region')!;
-    }
-    get yourphonenumber() {
-      return this.myform.get('yourphonenumber')!;
-    }
-    get money() {
-      return this.myform.get('money')!;
-    }
-    get eMail() {
-      return this.myform.get('eMail')!;
-    }
-    get soCMT() {
-      return this.myform.get('soCMT')!;
-    }
-    get optionsRadios() {
-      return this.myform.get('optionsRadios')!;
-    }
-    get optionChecked() {
-      return this.myform.get('optionChecked')!;
-    }
-    get password() {
-      return this.myform.get('password')!;
-    }
-    get dIssue() {
-      return this.myform.get('dIssue')!;
-    }
-    get pIssue() {
-      return this.myform.get('pIssue')!;
-    }
-    get Theoky() {
-      return this.myform.get('Theoky')!;
-    }
-    get checkbox() {
-      return this.myform.get('checkbox')!;
-    }
-    get checkbox2() {
-      return this.myform.get('checkbox2')!;
-    }
-    get ngay() {
-      return this.myform.get('ngay')!;
-    }
-
-    
+    get datacode() {return this.myform.get('datacode')!;}
+    get group() {return this.myform.get('group')!;}
+    get uName() {return this.myform.get('uName')!;}
+    get lastName() {return this.myform.get('lastName')!;}
+    get object() {return this.myform.get('object')!;}
+    get datacode2() {return this.myform.get('datacode2')!; }
+    get middlename() {return this.myform.get('middlename')!;}
+    get uphonenumber() {return this.myform.get('uphonenumber')!;}
+    get address() {return this.myform.get('address')!;}
+    get legal() {return this.myform.get('legal')!;}
+    get position() {return this.myform.get('position')!;}
+    get guest() {return this.myform.get('guest')!;}
+    get gphonenumber() {return this.myform.get('gphonenumber')!;}
+    get country() {return this.myform.get('country')!;}
+    get file() {return this.myform.get('file')!;}
+    get fax() {return this.myform.get('fax')!;}
+    get unit() {return this.myform.get('unit')!;}
+    get objective() {return this.myform.get('objective')!;}
+    get stream() {return this.myform.get('stream')!;}
+    get region() {return this.myform.get('region')!;}
+    get yourphonenumber() {return this.myform.get('yourphonenumber')!;}
+    get money() {return this.myform.get('money')!;}
+    get eMail() {return this.myform.get('eMail')!;}
+    get soCMT() {return this.myform.get('soCMT')!;}
+    get optionsRadios() {return this.myform.get('optionsRadios')!;}
+    get optionChecked() {return this.myform.get('optionChecked')!;}
+    get password() {return this.myform.get('password')!;}
+    get dIssue() {return this.myform.get('dIssue')!;}
+    get pIssue() {return this.myform.get('pIssue')!;}
+    get Theoky() {return this.myform.get('Theoky')!;}
+    get checkbox() {return this.myform.get('checkbox')!;}
+    get checkbox2() {return this.myform.get('checkbox2')!;}
+    get ngay() {return this.myform.get('ngay')!;}
 
 
     dateNotInFuture(): ValidatorFn {
@@ -196,9 +106,6 @@ export class TestComponent  {
       datacode: [
         { type: 'required', message: 'Không được bỏ trống.' }
       ],
-      group: [
-        {type: 'required', message: 'Không được bỏ trống.'}
-      ],
       uName: [
         { type: 'required', message: 'Tên không được bỏ trống.' },
         { type: 'minlength', message: 'Tên không được ít hơn 3 kí tự.' },
@@ -214,58 +121,18 @@ export class TestComponent  {
       object: [
         { type: 'required', message: 'Không được bỏ trống.' }
       ],
-      datacode2: [
-        { type: 'required', message: 'Mã số thuế không được bỏ trống.' },
-        { type: 'pattern', message: 'Mã số thuế phải được nhập số.' }
-      ],
-      middlename: [
-        { type: 'required', message: 'Tên viết tắt không được bỏ trống.' }
-      ],
       uphonenumber: [
         { type: 'required', message: 'Địa chỉ liên hệ không được bỏ trống.' },
         { type: 'pattern', message: 'Địa chỉ liên hệ phải được nhập số.' },
         { type: 'maxlength', message: 'Địa chỉ liên hệ không được nhiều hơn 10 số.' }
-      ],
-      address: [
-        { type: 'required', message: 'Địa chỉ trên hóa đơn không được bỏ trống.' }
-      ],
-      legal: [
-        { type: 'required', message: 'Đại diện pháp luật không được bỏ trống.' }
-      ],
-      position: [
-        { type: 'required', message: 'Chức vụ đại diện không được bỏ trống.' }
-      ],
-      guest: [
-        { type: 'required', message: 'Đối tác liên hệ không được bỏ trống.' }
       ],
       gphonenumber: [
         { type: 'required', message: 'Số điện thoại đối tác không được bỏ trống.' },
         { type: 'pattern', message: 'Số điện thoại đối tác phải được nhập số.' },
         { type: 'maxlength', message: 'Số điện thoại đối tác không được nhiều hơn 10 số.' }
       ],
-      country: [
-        { type: 'required', message: 'Quốc gia không được bỏ trống.' }
-      ],
       optionsRadios: [
         { type: 'required', message: 'Không được bỏ trống.' }
-      ],
-      fax: [
-        { type: 'required', message: 'fax không được bỏ trống.' }
-      ],
-      unit: [
-        { type: 'required', message: 'Đơn vị cơ sở không được bỏ trống.' }
-      ],
-      objective: [
-        { type: 'required', message: 'Ngành hàng không được bỏ trống.' }
-      ],
-      stream: [
-        { type: 'required', message: 'Kênh bán hàng không được bỏ trống.' }
-      ],
-      region: [
-        { type: 'required', message: 'Vùng không được bỏ trống.' }
-      ],
-      money: [
-        { type: 'required', message: 'Tiền tệ phí BL không được bỏ trống.' }
       ],
       yourphonenumber: [
         { type: 'required', message: 'Số điện thoại không được bỏ trống.' },
@@ -283,27 +150,15 @@ export class TestComponent  {
       optionChecked: [
         { type: 'required', message: 'Không được bỏ trống.' }
       ],
-      password: [
-        { type: 'required', message: 'không được bỏ trống.' }
-      ],
       dIssue: [
         { type: 'required', message: 'Ngày cấp không được bỏ trống.' },
         { type: 'futureDate', message: 'Ngày cấp không được lớn hơn ngày hiện tại.' }
-      ],
-      pIssue: [
-        { type: 'required', message: 'Nơi cấp không được bỏ trống.' }
       ],
       checkbox: [
         { type: 'required', message: 'Không được bỏ trống.' }
       ],
       checkbox2: [
         { type: 'required', message: 'Không được bỏ trống.' }
-      ],
-      Theoky: [
-        { type: 'required', message: 'Theo kỳ không được bỏ trống.' }
-      ],
-      ngay: [
-        { type: 'required', message: 'Ngày Không được bỏ trống.' }
       ],
     };
   

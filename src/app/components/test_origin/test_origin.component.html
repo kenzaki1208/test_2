@@ -1,4 +1,9 @@
+
+
+
+
 <div>
+    
     <wj-flex-grid #flex #flexGrid [itemsSource]="data" [isReadOnly]="false" [selectionMode]="'Row'" style="height: 800px; width: 2000px;" (formatItem)="formatItem(flexGrid, $event)"
     (selectionChanged)="onSelectionChanged(flexGrid)"
     (initialized)="initializeGrid(flex)">

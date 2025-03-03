@@ -93,4 +93,5 @@ export class TestOriginComponent implements OnInit {
           selectedRow.cssClass = 'selected';
         }
       }
+
 }

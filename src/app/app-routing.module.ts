@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TestComponent } from './components/test/test.component';
 import { GridComponentComponent } from './components/test_01/grid-component.component';
 import { TestOriginComponent } from './components/test_origin/test_origin.component';
+import { Test03Component } from './components/test_03/test_03.component';
 
 const routes: Routes = [
   {
@@ -21,9 +22,9 @@ const routes: Routes = [
     title: 'Test-origin'
   },
   {
-    component: TestOriginComponent,
-    path: 'test02',
-    title: 'Test_02',
+    component: Test03Component,
+    path: 'test03',
+    title: 'test-03'
   },
   {
     path: '',
