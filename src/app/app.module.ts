@@ -13,13 +13,17 @@ import { DataService } from './components/test/data.service';
 import { GridComponentComponent } from './components/test_01/grid-component.component'
 import { TestOriginComponent } from './components/test_origin/test_origin.component';
 import { Test03Component } from './components/test_03/test_03.component';
+import { Test04Component } from './components/test_04/test_04.component';
+import { Test05Component } from './components/test_05/test_05.component';
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     GridComponentComponent,
     TestOriginComponent,
-    Test03Component
+    Test03Component,
+    Test04Component,
+    Test05Component
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { Test03Component } from './components/test_03/test_03.component';
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    WjGridModule
+    WjGridModule,
   ],
   providers: [
     DataService,

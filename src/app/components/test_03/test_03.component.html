@@ -1,5 +1,6 @@
+<!--------------------------------Interpolation Binding---------------------------------->
 <h1>Interpolation Binding</h1>
-<h2>Hello {{city}} {{1 + 1}}</h2>
+<h2>Hello {{city}} {{(1 + 1)*5}}</h2>
 
 <span *ngIf="isLoggedIn">Welcome home, my friend !</span> 
 <span *ngIf="!isLoggedIn">You're not my friend, Who are you ?</span> 
@@ -7,7 +8,32 @@
 <span *ngFor="let user of user, trackbBy: user.id">
     <p>{{user.name}}</p>
 </span>
+
+<h2>Welcome to {{title5}}</h2>
+<p>{{firstName}} {{lastName}}</p>
+<input [(ngModel)]="name" placeholder="Enter your name">
+<p *ngIf="name">Hello, {{name}}!</p>
+<ul>
+    <li *ngFor="let item of items">{{item}}</li>
+</ul>
+<div *ngFor="let user of users">
+    <div *ngIf="user.age >= 22">{{user.name}} Bạn có thể đi chơi</div>
+</div>
+
+
+
 <br>
+
+
+<!-------------------------------Property Binding----------------------------------->
+<h1>Property Binding</h1>
+<img [src]="image" height="50px" weight="40px">
+<br>
+
+
+
+
+<!-------------------------------Event Binding----------------------------------->
 <h1>Event Binding</h1>
 <section (mouseover)="onMouseOver()">
     There's a secret message for you, hover to reveal: {{message}}
@@ -24,12 +50,15 @@
 </div>
 <br>
 
+
+
+
+<!-------------------------------Two-way Binding----------------------------------->
 <h1>Two-way Binding</h1>
 <p>Property Binding</p> 
-<input type="text" [(ngModel)]="Geeks"><br> 
+<input type="text" [(ngModel)]="Geeks">
 <h3>Learning Property binding on {{ Geeks }} </h3>
-<img [src]="image" height="50px" weight="40px">
-<br>
+<br> <br>
 
 <h1 class="title" [style.Color]="title_color"> {{title}} - {{title_color}} </h1>
 <input type="color" id="title" name="title" [(ngModel)]="title_color">
@@ -38,3 +67,23 @@
 <input type="color" [(ngModel)]="table_color">
 
 <h1>{{message1}}</h1>
+
+
+
+
+<!-----------------------------fusion 4 type binding--------------------------------->
+
+<h1>{{title6}}</h1>
+<img [src]="userAvatar" [alt]="username">
+<p>Welcome, {{username}} !</p>
+<input [(ngModel)] = "username" placeholder="Change username">
+<button (click)="updateProfile()">Update Profile</button>
+
+
+
+<!-----------------------------------Components-------------------------------------->
+
+<h1>User Information</h1>
+<p>First Name: <input [(ngModel)]="firstName"></p>
+<p>Last Name: <input [(ngModel)]="lastName"></p>
+<p>Full Name: {{firstName}} {{lastName}}</p>
