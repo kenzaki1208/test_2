@@ -1,19 +1,30 @@
 <h1>Các kiểu vòng lặp trong Angular</h1>
 
+<!-- Nhân đôi giá trị để thấy cách sử dụng chỉ số i. -->
 <h2>1. Vòng lặp for cơ bản</h2>
 <ul><li *ngFor="let item of forBasicResult">{{item}}</li></ul>
 
+
+<!-- Chỉ thêm tiền tố để nhấn mạnh việc lấy giá trị trực tiếp. -->
 <h2>2. Vòng lặp for...of</h2>
 <ul><li *ngFor="let item of forOfResult">{{item}}</li></ul>
 
+
+<!-- Hiển thị cả chỉ số và giá trị, phù hợp với đặc điểm lặp qua index. -->
 <h2>3. Vòng lặp for...in</h2>
 <ul><li *ngFor="let item of forInResult">{{item}}</li></ul>
 
+
+<!-- Bình phương giá trị để thấy cách dùng hàm callback. -->
 <h2>4. Vòng lặp forEach</h2>
 <ul><li *ngFor="let item of forEachResult">{{item}}</li></ul>
 
+
+<!-- Cộng thêm 10 để minh họa lặp bằng điều kiện. -->
 <h2>5. Vòng lặp While</h2>
 <ul><li *ngFor="let item of whileResult">{{item}}</li></ul>
 
+
+<!-- Chia đôi giá trị để phân biệt với while. -->
 <h2>6. Vòng lặp do...while</h2>
 <ul><li *ngFor="let item of doWhileResult">{{item}}</li></ul>
