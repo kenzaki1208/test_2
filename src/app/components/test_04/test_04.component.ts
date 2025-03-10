@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
     selector: 'app-test-04',
@@ -6,12 +6,44 @@ import { Component } from '@angular/core';
     styleUrls: ['./test_04.component.scss']
 })
 export class Test04Component {
-    constructor() { }
+    @ViewChild('buttonContainer') buttonContainer!: ElementRef;
+
+    constructor(private renderer: Renderer2) { }
 
     eventResults: { eventType: string, result: string, timestamp1: string, timestamp2: string } [] = [];
     message = '';
     name: string = '';
     title4 = 'Geeks';
+    isMouseMoveBlocked = false;
+    private specialChars = ['@', '#', '$', '%', 'Shift'];
+    private blockedKeys = new Set<string>();
+    private dynamicButtons: HTMLElement[] = [];
+
+
+    addNewButton() {
+        const newButton = this.renderer.createElement('button');
+        const buttonCount = this.dynamicButtons.length + 1; 
+        const buttonName = `Button ${buttonCount}`;
+        
+        this.renderer.setProperty(newButton, 'innerText', buttonName);
+        this.renderer.addClass(newButton, 'custom-btn');
+
+        this.renderer.listen(newButton, 'click', () => {
+            this.addEventResult(buttonName, `${buttonName} clicked!`);
+        });
+
+        this.renderer.appendChild(this.buttonContainer.nativeElement, newButton);
+        this.dynamicButtons.push(newButton);
+    }
+
+    removeLastButton() {
+        if (this.dynamicButtons.length > 0) {
+            const lastButton = this.dynamicButtons.pop(); 
+            if (lastButton) {
+                this.renderer.removeChild(this.buttonContainer.nativeElement, lastButton);
+            }
+        }
+    }
 
     addEventResult(eventType: string, result: string) {
         this.eventResults.push ({
@@ -33,8 +65,10 @@ export class Test04Component {
     }
 
     onMouseMove(event: MouseEvent) {
-        const position = `X: ${event.clientX}, Y: ${event.clientY}`;
-        this.addEventResult('Mouse Move', position);
+        if (!this.isMouseMoveBlocked) { 
+            const position = `X: ${event.clientX}, Y: ${event.clientY}`;
+            this.addEventResult('Mouse Move', position);
+        }
     }
 
     onDoubleClick(event: MouseEvent) {
@@ -42,8 +76,15 @@ export class Test04Component {
     }
 
     onRightClick(event: MouseEvent) {
-        event.preventDefault();
-        this.addEventResult('Right Click', 'Right-click detected on section');
+        event.preventDefault(); 
+
+        this.isMouseMoveBlocked = !this.isMouseMoveBlocked;
+
+        if (this.isMouseMoveBlocked) {
+            this.addEventResult('Right Click', 'Mouse Move blocked');
+        } else {
+            this.addEventResult('Right Click', 'Mouse Move enabled');
+        }
     }
 
     onInputChange(event: any) {
@@ -53,6 +94,15 @@ export class Test04Component {
 
     onKeyDown(event: KeyboardEvent) {
         const key = event.key;
+        if (this.specialChars.includes(key)) {
+            if (!this.blockedKeys.has(key)) {
+                this.addEventResult('Key Down', `Special char: ${key} - Stopped`);
+                this.blockedKeys.add(key);
+            }
+            event.preventDefault(); // Chặn tất cả sự kiện sau
+            event.stopPropagation(); // Đảm bảo chặn triệt để
+            return;
+        }
         if (key === 'Enter' && this.name) {
             this.addEventResult('Key Down', `Enter pressed: Hello ${this.name}`);
         } else if (key === 'Escape') {
@@ -73,6 +123,9 @@ export class Test04Component {
 
     onKeyUp (event: KeyboardEvent) {
         const key = event.key;
+        if (this.blockedKeys.has(key)) {
+            return;
+        }
         if (key === 'Enter' && this.name) {
             this.addEventResult('Key Up', `Enter released: confirmed ${this.name}`);
         } else {
@@ -88,5 +141,7 @@ export class Test04Component {
 
     clearResults() {
         this.eventResults = [];
+        this.blockedKeys.clear();
     }
+
 }
