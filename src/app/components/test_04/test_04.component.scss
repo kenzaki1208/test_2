@@ -1,7 +1,17 @@
 .table-container {
-    max-height: 400px; 
+    overflow-y: auto hidden;
     position: relative;
     display: block;
+    margin-bottom: 10px;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-container button {
+    margin: 5px 0;
 }
 
 .icon-btn {
@@ -27,48 +37,9 @@ button.custom-btn:hover {
     background-color: rgb(6, 216, 6);
 }
 
-.event-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    table-layout: fixed;
-}
-
-.event-table th,
-.event-table td {
-    padding: 5px 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    position: relative;
-}
-
-.event-table th {
-    background-color: rgb(100, 100, 250);
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-.event-table thead th {
-    background-color: rgb(100, 100, 250);
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-.event-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.event-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-.event-table td[colspan="4"] {
-    text-align: center;
-    color: #888;
-    font-style: italic;
+.button-container {
+    text-align: right; 
+    padding: 10px 0;
 }
 
 button {
