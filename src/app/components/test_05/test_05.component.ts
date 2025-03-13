@@ -56,7 +56,7 @@ export class Test05Component {
         let story = "";
         let connectorIndex = 0;
 
-        for (let [, name] of this.items) { // Dùng destructuring để lấy value (name)
+        for (let [, name] of this.items) { 
             if (story === "") {
                 story = name;
             } else {
@@ -79,7 +79,7 @@ export class Test05Component {
         // Chuyển Map thành array để dùng for...in hoặc dùng for...of
         const entries = Array.from(this.items.entries());
         for (let i in entries) {
-            const nameLength = entries[i][1].length; // Lấy name từ value
+            const nameLength = entries[i][1].length; 
             if (nameLength < 6) {
                 lengthGroups["Dưới 6"]++;
             } else if (nameLength <= 8) {
@@ -98,7 +98,7 @@ export class Test05Component {
 
     // Vòng lặp forEach
     runForEach() {
-        this.items.forEach((name, id) => { // name là value, id là key
+        this.items.forEach((name, id) => { 
             const nameLength = name.length;
             const fameBase = nameLength * 2;
             const fameAdjustment = id < 0 ? -5 : 3;
@@ -116,7 +116,7 @@ export class Test05Component {
         const entries = Array.from(this.items.entries());
 
         while (i < entries.length) {
-            const [id, name] = entries[i]; // Destructuring để lấy id và name
+            const [id, name] = entries[i]; 
             idSum += id;
             const nameLength = name.length;
 
@@ -140,7 +140,7 @@ export class Test05Component {
         const entries = Array.from(this.items.entries());
 
         do {
-            const [, currentName] = entries[i]; // Lấy name từ value
+            const [, currentName] = entries[i]; 
             const firstChar = currentName[0];
             const randomIndex = Math.floor(Math.random() * currentName.length);
             const randomChar = currentName[randomIndex];

@@ -1,6 +1,5 @@
 .table-container {
     max-height: 400px; 
-    overflow-y: auto;
     position: relative;
     display: block;
 }
@@ -18,6 +17,14 @@
 
 .icon-btn:hover {
     background-color: rgb(12, 12, 158);
+}
+
+button.custom-btn {
+    background-color: rgb(72, 250, 72);
+}
+
+button.custom-btn:hover {
+    background-color: rgb(6, 216, 6);
 }
 
 .event-table {
@@ -108,4 +115,15 @@ input:focus {
     outline: none;
     border-color: #4CAF50;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+:host ::ng-deep .wj-cells .wj-cell.wj-state-selected {
+    background-color: #ffeb3b !important; 
+    font-weight: bold;
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.wj-state-multi-selected {
+    background-color: #4caf50 !important; 
+    color: white;
 }

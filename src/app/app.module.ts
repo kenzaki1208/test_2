@@ -23,7 +23,7 @@ import { Test05Component } from './components/test_05/test_05.component';
     TestOriginComponent,
     Test03Component,
     Test04Component,
-    Test05Component
+    Test05Component,
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,23 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
-
+import { Component, ElementRef, Renderer2, ViewChild, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import * as wjGrid from '@grapecity/wijmo.grid';
+import * as wjCore from '@grapecity/wijmo';
+import { WjFlexGrid } from '@grapecity/wijmo.angular2.grid';
+import { DataService } from '../test/data.service';
+import { EditHighlighter } from '../test_01/edit-highlighter';
 @Component({
     selector: 'app-test-04',
     templateUrl: './test_04.component.html',
     styleUrls: ['./test_04.component.scss']
 })
-export class Test04Component {
+export class Test04Component implements OnInit {
+    @ViewChild('flexGrid') flexGrid!: WjFlexGrid;
     @ViewChild('buttonContainer') buttonContainer!: ElementRef;
-
-    constructor(private renderer: Renderer2) { }
-
+    
+    
     eventResults: { eventType: string, result: string, timestamp1: string, timestamp2: string } [] = [];
+    gridData: wjCore.CollectionView;
+
     message = '';
     name: string = '';
     title4 = 'Geeks';
@@ -18,7 +25,87 @@ export class Test04Component {
     private specialChars = ['@', '#', '$', '%', 'Shift'];
     private blockedKeys = new Set<string>();
     private dynamicButtons: HTMLElement[] = [];
+    
+    constructor(private renderer: Renderer2, private dataService: DataService, private router: Router) { 
+        this.gridData = new wjCore.CollectionView(this.eventResults, {
+            trackChanges: true
+        });
+    }
+    
+    ngOnInit(): void {
+        this.gridData.sourceCollection = this.eventResults;
+        this.initializeGrid(this.flexGrid);
+    }
+    
+    ngAfterViewInit(): void {
+        const flexGridControl = (this.flexGrid as any).control; 
+        this.initializeGrid(flexGridControl); 
+    }
 
+    initializeGrid(grid:any){
+        if (grid) {
+            grid.columns.forEach((col: any) => {
+                col.width = '*';
+            })
+
+            grid.formatItem.addHandler((s: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) => {
+                this.formatItem(s, e);
+            });
+
+            grid.selectionChanged.addHandler((s: wjGrid.FlexGrid, e: wjCore.EventArgs) => {
+                this.onSelectionChanged(s);
+            })
+        }
+    };
+
+    formatItem(s: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) {
+        if (e.panel === s.cells) {
+            const row = e.row;
+            const col = e.col;
+            const data = s.rows[row].dataItem; 
+    
+            e.cell.classList.remove('wj-cell-highlight', 'highlight');
+    
+            if (col === s.columns.indexOf('eventType') && data.eventType === 'Mouse Over') {
+                e.cell.classList.add('wj-cell-highlight');
+            }
+    
+            if (col === s.columns.indexOf('result') && data.result && data.result.includes('clicked')) {
+                e.cell.classList.add('wj-cell-highlight');
+            }
+    
+            const today = new Date().toLocaleDateString();
+            if (col === s.columns.indexOf('timestamp1') && data.timestamp1 === today) {
+                e.cell.classList.add('wj-cell-highlight');
+            }
+    
+            if (col === s.columns.indexOf('timestamp2') && data.timestamp2) {
+                const time = data.timestamp2;
+                const hour = parseInt(time.split(':')[0], 10);
+                if (hour < 12) {
+                    e.cell.classList.add('highlight');
+                }
+            }
+        }
+    }
+
+    onSelectionChanged(grid:any){
+        const selectedItems = grid.selectedItems[0];
+        if (selectedItems) {
+            console.log('Selected:',selectedItems);
+            //this.addEventResult('Selection Changed', `Selected: ${selectedItems.eventType}`);
+        }
+    };
+
+    addEventResult(eventType: string, result: string) {
+        this.eventResults.push ({
+            eventType,
+            result,
+            timestamp1: new Date().toLocaleDateString(),
+            timestamp2: new Date().toLocaleTimeString()
+        });
+        this.gridData.refresh();
+    }
 
     addNewButton() {
         const newButton = this.renderer.createElement('button');
@@ -45,14 +132,6 @@ export class Test04Component {
         }
     }
 
-    addEventResult(eventType: string, result: string) {
-        this.eventResults.push ({
-            eventType,
-            result,
-            timestamp1: new Date().toLocaleDateString(),
-            timestamp2: new Date().toLocaleTimeString()
-        });
-    }
 
     onMouseOver() {
         this.message = 'way to go';
@@ -80,11 +159,7 @@ export class Test04Component {
 
         this.isMouseMoveBlocked = !this.isMouseMoveBlocked;
 
-        if (this.isMouseMoveBlocked) {
-            this.addEventResult('Right Click', 'Mouse Move blocked');
-        } else {
-            this.addEventResult('Right Click', 'Mouse Move enabled');
-        }
+        this.addEventResult('Right Click', this.isMouseMoveBlocked ? 'Mouse Move Blocked' : 'Mouse Move Unblocked');
     }
 
     onInputChange(event: any) {
@@ -142,6 +217,8 @@ export class Test04Component {
     clearResults() {
         this.eventResults = [];
         this.blockedKeys.clear();
+        this.gridData.sourceCollection = this.eventResults;
+        this.gridData.refresh();
     }
 
 }

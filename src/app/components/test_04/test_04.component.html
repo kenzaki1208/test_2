@@ -14,29 +14,17 @@
 
 <h3>Event Result</h3>
 <div class="table-container">
-    <table class="event-table">
-        <thead>
-            <tr>
-                <th>Event Type</th>
-                <th>Result</th>
-                <th>Date</th>
-                <th>Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let result of eventResults; let i = index" class="table-row">
-                <td>{{result.eventType}}</td>
-                <td>{{result.result}}</td>
-                <td>{{result.timestamp1}}</td>
-                <td>
-                    {{result.timestamp2}}
-                </td>
-            </tr>
-            <tr *ngIf="eventResults.length === 0">
-                <td colspan="4">No events recorded yet</td>
-            </tr>
-        </tbody>
-    </table>
+    <wj-flex-grid #flex #flexGrid 
+                  [itemsSource]="gridData" 
+                  [isReadOnly]="true" 
+                  [selectionMode]="'Row'" 
+                  style="height: 400px; width: 100%;">
+        
+        <wj-flex-grid-column [header]="'Event Type'" [binding]="'eventType'" [width]="'*'" [cssClass]="'event-type'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Result'" [binding]="'result'" [width]="'*'" [cssClass]="'result'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Date'" [binding]="'timestamp1'" [width]="'*'" [cssClass]="'date'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Time'" [binding]="'timestamp2'" [width]="'*'" [cssClass]="'time'"></wj-flex-grid-column>
+    </wj-flex-grid>
 </div>
 
 
