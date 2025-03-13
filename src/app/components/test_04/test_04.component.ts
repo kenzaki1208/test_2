@@ -1,4 +1,4 @@
-import { Component, ElementRef, Renderer2, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import * as wjGrid from '@grapecity/wijmo.grid';
 import * as wjCore from '@grapecity/wijmo';
@@ -13,6 +13,8 @@ import { DataService } from '../test/data.service';
 export class Test04Component implements OnInit {
     @ViewChild('flexGrid') flexGrid!: WjFlexGrid;
     @ViewChild('buttonContainer') buttonContainer!: ElementRef;
+    @ViewChild('mainContainer') mainContainer!: ElementRef;
+    @ViewChild('tableContainer') tableContainer!: ElementRef;
 
     eventResults: { eventType: string, result: string, timestamp1: string, timestamp2: string }[] = [];
     gridData: wjCore.CollectionView;
@@ -39,6 +41,33 @@ export class Test04Component implements OnInit {
     ngAfterViewInit(): void {
         const flexGridControl = (this.flexGrid as any).control;
         this.initializeGrid(flexGridControl);
+        this.adjustGridHeight();
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event: Event) {
+        this.adjustGridHeight();
+    }
+
+    adjustGridHeight() {
+        if (!this.mainContainer || !this.tableContainer || !this.flexGrid) return;
+
+        const mainContainerHeight = this.mainContainer.nativeElement.offsetHeight;
+        let otherElementsHeight = 0;
+
+        Array.from<HTMLElement>(this.mainContainer.nativeElement.children).forEach((child) => {
+            if (child instanceof HTMLElement && child !== this.tableContainer.nativeElement) {
+                otherElementsHeight += child.offsetHeight;
+            }
+        });
+
+        const remainingHeight = mainContainerHeight - otherElementsHeight;
+        this.renderer.setStyle(this.tableContainer.nativeElement, 'height', `${remainingHeight}px`);
+
+        const flexGridControl = (this.flexGrid as any).control;
+        if (flexGridControl) {
+            flexGridControl.refresh();
+        }
     }
 
     initializeGrid(grid: any) {
@@ -63,23 +92,20 @@ export class Test04Component implements OnInit {
             const col = e.col;
             const data = s.rows[row].dataItem;
 
-            // Xóa class highlight cũ trước khi áp dụng mới
             e.cell.classList.remove('wj-cell-highlight', 'highlight');
 
-            // Kiểm tra cột eventType và trạng thái chọn
             if (col === s.columns.indexOf('eventType')) {
-                if (s.selection.contains(row, col)) { // Kiểm tra ô có được chọn không
-                    e.cell.style.backgroundColor = '#ffeb3b'; // Màu vàng khi chọn
+                if (s.selection.contains(row, col)) {
+                    e.cell.style.backgroundColor = '#ffeb3b'; 
                     e.cell.style.color = 'black';
                     e.cell.style.fontWeight = 'bold';
                 } else {
-                    e.cell.style.backgroundColor = '#e6f3ff'; // Màu xanh nhạt khi không chọn
+                    e.cell.style.backgroundColor = '#e6f3ff'; 
                     e.cell.style.color = '#0066cc';
                     e.cell.style.fontWeight = 'bold';
                 }
             }
 
-            // Các điều kiện highlight khác
             if (col === s.columns.indexOf('eventType') && data.eventType === 'Mouse Over') {
                 e.cell.classList.add('wj-cell-highlight');
             }
@@ -101,7 +127,6 @@ export class Test04Component implements OnInit {
                 }
             }
 
-            // Tô màu xen kẽ cho các cột khác
             if (col !== s.columns.indexOf('eventType')) {
                 e.cell.style.backgroundColor = row % 2 === 0 ? '#f9f9f9' : '#fff';
             }

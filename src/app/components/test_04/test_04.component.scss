@@ -1,8 +1,26 @@
+body{
+    overflow: hidden;
+    margin: 0;
+}
+
+.main-container {
+    height: 700px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
 .table-container {
+    flex: 1;
     overflow-y: auto;
     position: relative;
     display: block;
     margin-bottom: 10px;
+}
+
+:host ::ng-deep .wj-flex-grid {
+    height: 100% !important;
+    width: 100% !important;
 }
 
 .table-container table {
@@ -23,6 +41,7 @@
     margin: 5px;
     font-size: 14px;
     transition: background-color 0.3s;
+    width: 50px !important;
 }
 
 .icon-btn:hover {
@@ -52,6 +71,8 @@ button {
     font-size: 14px;
     transition: background-color 0.3s;
     margin: 5px;
+    width: 150px;
+    
 }
 
 button:hover {
