@@ -1,5 +1,5 @@
 .table-container {
-    overflow-y: auto hidden;
+    overflow-y: auto;
     position: relative;
     display: block;
     margin-bottom: 10px;
@@ -38,7 +38,7 @@ button.custom-btn:hover {
 }
 
 .button-container {
-    text-align: right; 
+    text-align: right;
     padding: 10px 0;
 }
 
@@ -90,11 +90,19 @@ input:focus {
 
 :host ::ng-deep .wj-cells .wj-cell.wj-state-selected {
     background-color: #ffeb3b !important; 
-    font-weight: bold;
-    color: black;
+    font-weight: bold ;
+    color: black ;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.event-type:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-cell.wj-alt.event-type:not(.wj-state-selected) {
+    background-color: rgb(249, 161, 249) !important; 
+    color: black ; 
+    font-weight: bold ;
 }
 
 :host ::ng-deep .wj-cells .wj-cell.wj-state-multi-selected {
-    background-color: #4caf50 !important; 
-    color: white;
+    background-color: #4caf50 !important;
+    color: white !important;
 }
+
