@@ -1,10 +1,3 @@
-// html, body {
-//     margin: 0;
-//     padding: 0;
-//     height: 100%;
-//     -ms-overflow-style: none;
-//     scrollbar-width: none; 
-// }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {
     display: none;
@@ -57,10 +50,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     height: 100% !important;
     width: 100% !important;
 }
-
-// .table-container table {
-//     width: 100%;
-// }
 
 .table-container button {
     margin: 5px 0;
@@ -143,81 +132,27 @@ input:focus {
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
 }
 
-:host ::ng-deep .wj-cells .wj-cell.wj-state-selected {
-    background-color: #ffeb3b !important; 
-    font-weight: bold ;
-    color: black ;
-}
-
-
-:host ::ng-deep .wj-cells .wj-cell.mouse-over:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.mouse-over:not(.wj-state-selected) {
-    background-color: rgb(249, 161, 249);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.mouse-move:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.mouse-move:not(.wj-state-selected) {
-    background-color: rgb(184, 119, 249);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.mouse-out:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.mouse-out:not(.wj-state-selected) {
-    background-color: rgb(177, 245, 74);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.double-click:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.double-click:not(.wj-state-selected) {
-    background-color: rgb(1, 248, 1);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.right-click:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.right-click:not(.wj-state-selected) {
-    background-color: rgb(247, 221, 75);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.input-change:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.input-change:not(.wj-state-selected) {
-    background-color: rgb(255, 201, 63);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.key-down:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.key-down:not(.wj-state-selected) {
-    background-color: rgb(251, 173, 71);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.key-press:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.key-press:not(.wj-state-selected) {
-    background-color: rgb(243, 106, 106);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.key-up:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.key-up:not(.wj-state-selected) {
-    background-color: rgb(177, 99, 250);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.button-click:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.button-click:not(.wj-state-selected) {
-    background-color: rgb(140, 140, 244);
-    color: black;
-}
-
-:host ::ng-deep .wj-cells .wj-cell.custom-button:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-alt.wj-cell.custom-button:not(.wj-state-selected) {
-    background-color: rgb(209, 105, 105);
-    color: black;
-}
-
-
-:host ::ng-deep .wj-cells .wj-cell.wj-state-multi-selected {
-    background-color: #4caf50 !important;
-    color: white !important;
+:host ::ng-deep .wj-cells .wj-cell {
+    &.wj-state-selected {
+        background-color: #ffeb3b !important;
+        font-weight: bold;
+        color: black;
+    }
+    &.wj-state-multi-selected {
+        background-color: #4caf50 !important;
+        color: white !important;
+    }
+    &:not(.wj-state-selected) {
+        &.mouse-over, &.wj-alt.mouse-over { background-color: rgb(249, 161, 249); color: black; }
+        &.mouse-move, &.wj-alt.mouse-move { background-color: rgb(184, 119, 249); color: black; }
+        &.mouse-out, &.wj-alt.mouse-out { background-color: rgb(177, 245, 74); color: black; }
+        &.double-click, &.wj-alt.double-click { background-color: rgb(1, 248, 1); color: black; }
+        &.right-click, &.wj-alt.right-click { background-color: rgb(247, 221, 75); color: black; }
+        &.input-change, &.wj-alt.input-change { background-color: rgb(255, 201, 63); color: black; }
+        &.key-down, &.wj-alt.key-down { background-color: rgb(251, 173, 71); color: black; }
+        &.key-press, &.wj-alt.key-press { background-color: rgb(243, 106, 106); color: black; }
+        &.key-up, &.wj-alt.key-up { background-color: rgb(177, 99, 250); color: black; }
+        &.button-click, &.wj-alt.button-click { background-color: rgb(140, 140, 244); color: black; }
+        &.custom-button, &.wj-alt.custom-button { background-color: rgb(209, 105, 105); color: black; }
+    }
 }
