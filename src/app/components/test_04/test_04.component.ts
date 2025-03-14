@@ -27,6 +27,20 @@ export class Test04Component implements OnInit {
     private blockedKeys = new Set<string>();
     private dynamicButtons: HTMLElement[] = [];
 
+    private eventStyles: { [key: string]: string } = {
+        'Mouse Over': 'mouse-over',
+        'Mouse Out': 'mouse-out',
+        'Mouse Move': 'mouse-move',
+        'Double Click': 'double-click',
+        'Right Click': 'right-click',
+        'Input Change': 'input-change',
+        'Key Down': 'key-down',
+        'Key Press': 'key-press',
+        'Key Up': 'key-up',
+        'Button Click': 'button-click',
+        'Custom Button': 'custom-button'
+    };
+
     constructor(private renderer: Renderer2, private dataService: DataService, private router: Router) {
         this.gridData = new wjCore.CollectionView(this.eventResults, {
             trackChanges: true
@@ -35,13 +49,16 @@ export class Test04Component implements OnInit {
 
     ngOnInit(): void {
         this.gridData.sourceCollection = this.eventResults;
-        this.initializeGrid(this.flexGrid);
     }
 
     ngAfterViewInit(): void {
-        const flexGridControl = (this.flexGrid as any).control;
-        this.initializeGrid(flexGridControl);
-        this.adjustGridHeight();
+        if (this.flexGrid) {
+            const flexGridControl = (this.flexGrid as any).control;
+            this.initializeGrid(flexGridControl);
+            this.adjustGridHeight();
+        } else {
+            console.warn('FlexGrid is not initialized');
+        }
     }
 
     @HostListener('window:resize', ['$event'])
@@ -71,64 +88,76 @@ export class Test04Component implements OnInit {
     }
 
     initializeGrid(grid: any) {
-        if (grid) {
-            grid.columns.forEach((col: any) => {
-                col.width = '*';
-            });
+        if (!grid) return;
 
-            grid.formatItem.addHandler((s: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) => {
-                this.formatItem(s, e);
-            });
+        grid.columns.forEach((col: any) => {
+            col.width = '*';
+        });
 
-            grid.selectionChanged.addHandler((s: wjGrid.FlexGrid, e: wjCore.EventArgs) => {
-                this.onSelectionChanged(s);
-            });
-        }
+        grid.formatItem.addHandler((s: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) => {
+            this.handleFormatItem(s, e);
+        });
+
+        grid.selectionChanged.addHandler((s: wjGrid.FlexGrid, e: wjCore.EventArgs) => {
+            this.onSelectionChanged(s);
+        });
     }
 
-    formatItem(s: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) {
-        if (e.panel === s.cells) {
-            const row = e.row;
-            const col = e.col;
-            const data = s.rows[row].dataItem;
+    private handleFormatItem(s: wjGrid.FlexGrid, e: wjGrid.FormatItemEventArgs) {
+        if (e.panel !== s.cells) return;
 
-            e.cell.classList.remove('wj-cell-highlight', 'highlight');
+        const row = e.row;
+        const col = e.col;
 
-            if (col === s.columns.indexOf('eventType')) {
-                if (s.selection.contains(row, col)) {
-                    e.cell.style.backgroundColor = '#ffeb3b'; 
-                    e.cell.style.color = 'black';
-                    e.cell.style.fontWeight = 'bold';
-                } else {
-                    e.cell.style.backgroundColor = '#e6f3ff'; 
-                    e.cell.style.color = '#0066cc';
-                    e.cell.style.fontWeight = 'bold';
-                }
+        if (row < 0 || row >= s.rows.length) return;
+        const data = s.rows[row].dataItem;
+        if (!data) return;
+
+        e.cell.classList.remove(
+            'wj-cell-highlight',
+            'highlight',
+            'mouse-over',
+            'mouse-out',
+            'mouse-move',
+            'double-click',
+            'right-click',
+            'input-change',
+            'key-down',
+            'key-press',
+            'key-up',
+            'button-click'
+        );
+
+        this.applyRowStyle(e, data);
+
+        if (col === s.columns.indexOf('eventType') && data.eventType === 'Mouse Over') {
+            e.cell.classList.add('wj-cell-highlight');
+        }
+
+        if (col === s.columns.indexOf('result') && data.result && data.result.includes('clicked')) {
+            e.cell.classList.add('wj-cell-highlight');
+        }
+
+        const today = new Date().toLocaleDateString();
+        if (col === s.columns.indexOf('timestamp1') && data.timestamp1 === today) {
+            e.cell.classList.add('wj-cell-highlight');
+        }
+
+        if (col === s.columns.indexOf('timestamp2') && data.timestamp2) {
+            const time = data.timestamp2;
+            const hour = parseInt(time.split(':')[0], 10);
+            if (hour < 12) {
+                e.cell.classList.add('highlight');
             }
+        }
 
-            if (col === s.columns.indexOf('eventType') && data.eventType === 'Mouse Over') {
-                e.cell.classList.add('wj-cell-highlight');
-            }
+    }
 
-            if (col === s.columns.indexOf('result') && data.result && data.result.includes('clicked')) {
-                e.cell.classList.add('wj-cell-highlight');
-            }
-
-            const today = new Date().toLocaleDateString();
-            if (col === s.columns.indexOf('timestamp1') && data.timestamp1 === today) {
-                e.cell.classList.add('wj-cell-highlight');
-            }
-
-            if (col === s.columns.indexOf('timestamp2') && data.timestamp2) {
-                const time = data.timestamp2;
-                const hour = parseInt(time.split(':')[0], 10);
-                if (hour < 12) {
-                    e.cell.classList.add('highlight');
-                }
-            }
-
-            if (col !== s.columns.indexOf('eventType')) {
-                e.cell.style.backgroundColor = row % 2 === 0 ? '#f9f9f9' : '#fff';
+    private applyRowStyle(e: wjGrid.FormatItemEventArgs, data: any) {
+        if (data && data.eventType) {
+            const styleClass = this.eventStyles[data.eventType];
+            if (styleClass) {
+                e.cell.classList.add(styleClass);
             }
         }
     }
@@ -159,7 +188,7 @@ export class Test04Component implements OnInit {
         this.renderer.addClass(newButton, 'custom-btn');
 
         this.renderer.listen(newButton, 'click', () => {
-            this.addEventResult(buttonName, `${buttonName} clicked!`);
+            this.addEventResult('Custom Button', `${buttonName} clicked!`);
         });
 
         this.renderer.appendChild(this.buttonContainer.nativeElement, newButton);
@@ -248,8 +277,8 @@ export class Test04Component implements OnInit {
         }
     }
 
-    Clickme(event: MouseEvent) {
-        const alertMessage = this.name ? `Welcome ${this.name} to GreeksforGreeks` : 'Welcome to GreeksforGreeks';
+    clickMe(event: MouseEvent) {
+        const alertMessage = this.name ? `Welcome ${this.name} to GeeksforGeeks` : 'Welcome to GeeksforGeeks';
         alert(alertMessage);
         this.addEventResult('Button Click', alertMessage);
     }

@@ -1,21 +1,56 @@
-body{
-    overflow: hidden;
-    margin: 0;
+// html, body {
+//     margin: 0;
+//     padding: 0;
+//     height: 100%;
+//     -ms-overflow-style: none;
+//     scrollbar-width: none; 
+// }
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
 }
 
 .main-container {
-    height: 700px;
+    min-height: 100%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+
+.main-container::-webkit-scrollbar {
+    display: none;
+}
+
+
+.section-wrapper {
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.input-wrapper {
+    padding: 10px 0;
+    margin-bottom: 5px;
+}
+
+.event-binding-wrapper {
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .table-container {
     flex: 1;
+    max-height: 30vh;
     overflow-y: auto;
-    position: relative;
-    display: block;
     margin-bottom: 10px;
+    -ms-overflow-style: none; 
+}
+
+.table-container::-webkit-scrollbar {
+    display: none;
 }
 
 :host ::ng-deep .wj-flex-grid {
@@ -23,10 +58,9 @@ body{
     width: 100% !important;
 }
 
-.table-container table {
-    width: 100%;
-    border-collapse: collapse;
-}
+// .table-container table {
+//     width: 100%;
+// }
 
 .table-container button {
     margin: 5px 0;
@@ -115,15 +149,75 @@ input:focus {
     color: black ;
 }
 
-:host ::ng-deep .wj-cells .wj-cell.event-type:not(.wj-state-selected),
-:host ::ng-deep .wj-cells .wj-cell.wj-alt.event-type:not(.wj-state-selected) {
-    background-color: rgb(249, 161, 249) !important; 
-    color: black ; 
-    font-weight: bold ;
+
+:host ::ng-deep .wj-cells .wj-cell.mouse-over:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.mouse-over:not(.wj-state-selected) {
+    background-color: rgb(249, 161, 249);
+    color: black;
 }
+
+:host ::ng-deep .wj-cells .wj-cell.mouse-move:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.mouse-move:not(.wj-state-selected) {
+    background-color: rgb(184, 119, 249);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.mouse-out:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.mouse-out:not(.wj-state-selected) {
+    background-color: rgb(177, 245, 74);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.double-click:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.double-click:not(.wj-state-selected) {
+    background-color: rgb(1, 248, 1);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.right-click:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.right-click:not(.wj-state-selected) {
+    background-color: rgb(247, 221, 75);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.input-change:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.input-change:not(.wj-state-selected) {
+    background-color: rgb(255, 201, 63);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.key-down:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.key-down:not(.wj-state-selected) {
+    background-color: rgb(251, 173, 71);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.key-press:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.key-press:not(.wj-state-selected) {
+    background-color: rgb(243, 106, 106);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.key-up:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.key-up:not(.wj-state-selected) {
+    background-color: rgb(177, 99, 250);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.button-click:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.button-click:not(.wj-state-selected) {
+    background-color: rgb(140, 140, 244);
+    color: black;
+}
+
+:host ::ng-deep .wj-cells .wj-cell.custom-button:not(.wj-state-selected),
+:host ::ng-deep .wj-cells .wj-alt.wj-cell.custom-button:not(.wj-state-selected) {
+    background-color: rgb(209, 105, 105);
+    color: black;
+}
+
 
 :host ::ng-deep .wj-cells .wj-cell.wj-state-multi-selected {
     background-color: #4caf50 !important;
     color: white !important;
 }
-
