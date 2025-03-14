@@ -151,7 +151,7 @@ input:focus {
         &.input-change, &.wj-alt.input-change { background-color: rgb(255, 201, 63); color: black; }
         &.key-down, &.wj-alt.key-down { background-color: rgb(251, 173, 71); color: black; }
         &.key-press, &.wj-alt.key-press { background-color: rgb(243, 106, 106); color: black; }
-        &.key-up, &.wj-alt.key-up { background-color: rgb(177, 99, 250); color: black; }
+        &.key-up, &.wj-alt.key-up { background-color: aqua; color: black; }
         &.button-click, &.wj-alt.button-click { background-color: rgb(140, 140, 244); color: black; }
         &.custom-button, &.wj-alt.custom-button { background-color: rgb(209, 105, 105); color: black; }
     }
