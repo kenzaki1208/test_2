@@ -46,11 +46,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     display: none;
 }
 
-:host ::ng-deep .wj-flex-grid {
-    height: 100% !important;
-    width: 100% !important;
-}
-
 .table-container button {
     margin: 5px 0;
 }
@@ -95,7 +90,6 @@ button {
     transition: background-color 0.3s;
     margin: 5px;
     width: 150px;
-    
 }
 
 button:hover {
@@ -130,6 +124,11 @@ input:focus {
     outline: none;
     border-color: #4CAF50;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+:host ::ng-deep .wj-flex-grid {
+    height: 100% !important;
+    width: 100% !important;
 }
 
 :host ::ng-deep .wj-cells .wj-cell {
